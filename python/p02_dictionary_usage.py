@@ -37,3 +37,10 @@ k 1
 e 1
 w 2
 '''
+
+print()
+print('-- 보통 Dictionary 는 빨리 찾는 게 가장 중요한 구조라서 Key 들이 정렬되어 있지 않다 --')
+print('-- Python 의 Dictionary 는 저장 순서를 보장해 준다 --')
+print('-- Key 들을 정렬한 뒤에 루프를 돌아도 좋지만, 보통 그럴 일은 잘 없다 --')
+for ch in sorted(counts.keys()):
+  print(ch, counts[ch])
