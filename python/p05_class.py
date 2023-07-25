@@ -24,3 +24,14 @@ for obj in h1, h2:
     has = '있다' if hasattr(obj, attr) else '없다'
     print(f'객체 {obj} 는 속성 {attr} 이 {has}')
 
+print('\n-- 생성될때부터 속성을 가지고 있게 하려면 생성자(constructor) 를 만든다 --')
+class World:
+  def __init__(self): # C++/Java 의 this 대신 self 를 사용한다. 멤버함수는 첫번째 인자가 self 이다.
+    self.name = 'Unknown'
+    self.age = 0
+w1 = World()
+print(f'name={w1.name}, age={w1.age}')
+w2 = World()
+w2.name = 'David'
+print(f'name={w2.name}, age={w2.age}')
+
