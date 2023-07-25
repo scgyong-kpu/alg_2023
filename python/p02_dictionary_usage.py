@@ -17,11 +17,12 @@ words = [
 
 print()
 print('-- 각 글자별로 시작하는 단어가 몇개 있는제 세는 프로그램 --')
-counts = dict() # Dictionary 를 초기화한다
+print('-- 매번 Key 가 있는지 찾아보는 것이 귀찮을 때가 있다. 이럴때는 defaultdict 를 쓴다--')
+print('-- defaultdict(XXX) 로 생성된 것은 Key 가 존재하지 않으면 XXX() 로 값을 만든다--')
+from collections import defaultdict # import collections 라고 했다면
+counts = defaultdict(int)           # collections.defaultdict 라고 써야 한다
 for word in words: # 모든 단어들에 대하여
   first_ch = word[0] # 단어의 첫글자를 알아낸 뒤
-  if not first_ch in counts: # Dictionary 에 해당 Key 가 없으면 
-    counts[first_ch] = 0      # 만들고 0 으로 초기값을 준다
   counts[first_ch] += 1      # 해당 Key 의 Value 를 1 증가시킨다 
 
 for ch in counts.keys():
