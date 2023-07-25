@@ -11,14 +11,16 @@ print(d1["hello"])
 keys = [ "hello", "are_you_there", "world" ]
 for key in keys:
   print('-- Key:', key)
-  print('--- Value:', d1[key])
 
-'''
--- Key: hello
---- Value: 10
--- Key: are_you_there
-Traceback (most recent call last):
-  File "D:/Lectures/2023_2/git/python/p02_dictionary.py", line 14, in <module>
-    print('--- Value:', d1[key])
-KeyError: 'are_you_there'
-'''
+  value = d1[key] if key in d1 else '없는데요'
+  # if key in d1:
+  #   value = d1[key]
+  # else:
+  #   value = '없는데요'
+
+  print('--- Value:', value)
+
+# C/C++/Java 등에서 사용하는 3항연산자 a ? b : c 를
+# python 에서는 b if a else c 형태로 사용한다
+# 조금 더 영어문장스럽게 사용한다고 할 수 있다
+
