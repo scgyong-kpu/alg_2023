@@ -83,3 +83,12 @@ def func_dict(**hash):
 
 func_dict(name='john', age=20, score=4.5, msg='Hello,world')
 
+print('\n-- 리턴타입을 tuple 로 하면 두개이상의 값을 리턴하는 것이 가능하다 --')
+
+def func_returning_two(a, b):
+  sum = a + b
+  mul = a * b
+  return sum, mul # return [sum, mul] 로 해도 결과는 동일하다. list 를 tuple 에 대입하는 셈이므로.
+
+sum, mul = func_returning_two(12, 5)
+print(f'{sum=} {mul=}') # f-string 의 위력은 곧 알아봅시다
