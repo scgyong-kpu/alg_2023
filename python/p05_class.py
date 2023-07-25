@@ -48,3 +48,16 @@ hw2 = HelloWorld('John', 23)
 hw1.print()
 hw2.print()
 
+print('\n-- Python 은 상속 없이도 Polymorphism 이 가능하다 --')
+class Barista:
+  def work(self):
+    print("열심히 커피 만들어요")
+class Casher:
+  def work(self):
+    print("주문 받고 돈받아요")
+class Cleaner:
+  def work(self):
+    print("구석구석 깨끗이 청소해요")
+workers = [ Barista(), Casher(), Cleaner() ]
+for worker in workers:
+  worker.work()
