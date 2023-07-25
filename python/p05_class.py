@@ -49,15 +49,41 @@ hw1.print()
 hw2.print()
 
 print('\n-- Python 은 상속 없이도 Polymorphism 이 가능하다 --')
-class Barista:
+print('\n-- 하지만 상속이 있으면 좋을 때가 많다 --')
+class Worker:
+  def __init__(self, name):
+    self.name = name
+  def introduce(self):
+    print(f'나는 {self.name} 이라고 합니다.')
+
+class Barista(Worker):
+  def __init__(self, name):
+    super().__init__(name)
   def work(self):
     print("열심히 커피 만들어요")
-class Casher:
+class Casher(Worker):
+  def __init__(self, name):
+    super().__init__(name)
   def work(self):
     print("주문 받고 돈받아요")
-class Cleaner:
+class Cleaner(Worker):
+  def __init__(self, name, place):
+    super().__init__(name)
+    self.place = place
+  def introduce(self):
+    print(f'내이름은 {self.name}. {self.place} 를 청소하지.')
   def work(self):
     print("구석구석 깨끗이 청소해요")
-workers = [ Barista(), Casher(), Cleaner() ]
+workers = [ 
+  Barista('David'), 
+  Cleaner('Dijkstra', 'kitchen'),
+  Casher('John'), 
+  Cleaner('Bob', 'tables'),
+]
 for worker in workers:
+  worker.introduce()
   worker.work()
+# 상속 및 Polymorphism 의 핵심은 일 시키는 사람은 너 무슨 일 하니 하고 분기(branch)할 필요가 없다는 점이다
+# 너 소개해라. 너 니 일 해라. 라고 똑같이 말해도 (하나의 명령에) 각자 다른 코드가 호출된다 (다양한 형태로 자동분기)
+# = 다(poly)형(morph)성(ism)
+
