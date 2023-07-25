@@ -35,3 +35,16 @@ w2 = World()
 w2.name = 'David'
 print(f'name={w2.name}, age={w2.age}')
 
+print('\n-- 객체에 종속된 동작을 하게 하려면 클래스 내에 함수를 정의한다 --')
+class HelloWorld:
+  def __init__(self, name='Unknown', age=0):
+    self.name = name
+    self.age = age
+  def print(self):
+    print(f'name={self.name}, age={self.age}')
+
+hw1 = HelloWorld('David', 20)
+hw2 = HelloWorld('John', 23)
+hw1.print()
+hw2.print()
+
