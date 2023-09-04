@@ -2,7 +2,7 @@
 Algorithm Lecture 2023
 
 # Progress
-1. Chapter 1 : 알고리즘의 첫걸음
+1. **[9/4] Chapter 1 : 알고리즘의 첫걸음**
 2. Chapter 2 : 알고리즘을 배우기 위한 준비
 3. Python Basic 1 : Keywords, Collections
 4. Python Basic 2 : Module, Libraries
