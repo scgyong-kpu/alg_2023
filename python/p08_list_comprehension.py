@@ -9,3 +9,13 @@ squares_2 = [ i ** 2 for i in range(10) ]
 
 print('\n-- List Comprehension 이용하기 --')
 print(f'{squares_2=}')
+
+def func(n): return n ** 2
+
+squares_3 = map(func, range(10))
+print('\n-- map 이용하기 --')
+print(f'{squares_3=}')
+
+for sq in squares_3:
+  print(sq, end=', ')
+print()
