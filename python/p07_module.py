@@ -12,3 +12,10 @@ angle_radian = math.atan2((pt2[1]-pt1[1]), (pt2[0]-pt1[0]))
 angle_degree = 180 * angle_radian / math.pi
 
 print(f'두 점 사이의 선이 만드는 각도는 Radian 으로는 {angle_radian:.2f}, Degree 로는 {angle_degree:.2f}° 이다')
+
+# 길이를 알 때 각도만큼 회전했을 때의 좌표를 알려면 x 좌표는 cos, y 좌표는 sin 을 쓴다
+dx = distance * math.cos(2 * angle_radian)
+dy = distance * math.sin(2 * angle_radian)
+
+pt3 = [pt1[0] + dx, pt1[1] + dy]
+print(f'pt1 을 기준으로 {angle_degree:.2f}° 만큼 더 회전한 점은 [{pt3[0]:.2f}, {pt3[1]:.2f}] 이다')
