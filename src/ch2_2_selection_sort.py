@@ -10,7 +10,7 @@ def main():
   print('before:', array)
   count = len(array)
 
-  for a in range(2):
+  for a in range(count):
     min_value = array[a]
     min_at = a
     for b in range(a + 1, count):
