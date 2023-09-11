@@ -30,6 +30,8 @@ def main():
       if array[j-1] > array[j]:
         vis.swap(j-1, j)
         array[j-1], array[j] = array[j], array[j-1]
+      else:
+        break
 
   print('after :', array)
 
