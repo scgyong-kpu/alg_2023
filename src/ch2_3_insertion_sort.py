@@ -1,5 +1,6 @@
+from data_nearly_sorted_a_lot import nearly as numbers
 # from data_unsorted import numbers
-from data_unsorted_a_lot import numbers
+# from data_unsorted_a_lot import numbers
 # from vis import InsertionSortVisualizer as Visualizer
 # from vis import Dummy as Visualizer
 
@@ -92,11 +93,11 @@ if __name__ == '__main__':
     20000, 30000, 40000, 50000 ]
   for count in counts:
     array = numbers[:count]
-    shuffle(array)
+    # shuffle(array)
     startedOn = time()
     main()
     elapsed = time() - startedOn
-    print(f'{count=} {elapsed=:.3f}')
+    print(f'{count=:5d} {elapsed=:7.3f}')
   exit() 
 
   while True:
