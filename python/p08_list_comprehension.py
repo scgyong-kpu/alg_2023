@@ -28,3 +28,12 @@ print(f'{squares_4=}')
 squares_5 = list(map(lambda x: x**2, range(10)))
 print('\n-- map 에 전달할 함수는 lambda 키워드를 써서 인라인으로 작성 가능하다 ')
 print(f'{squares_5=}')
+
+from random import randrange
+dim3 = [[[] for _ in range(3)] for _ in range(4)] # 3열x4행 의 12개의 빈 배열 준비
+print(f'\nbefore: {dim3=}')
+for i in range(26):
+  ch = chr(ord('a')+i)
+  x, y = randrange(3), randrange(4)  # 12개 배열 중 하나를 랜덤하게 고름
+  dim3[y][x].append(ch) # 고른 배열에다가 이번 글자를 추가함
+print(f' after: {dim3=}')
