@@ -9,6 +9,14 @@ def main():
   print('before:', array)
   count = len(array)
 
+  for i in range(1, count):
+    vis.mark_end(i)
+    for j in range(i, 0, -1):
+      vis.compare(j-1, j)
+      if array[j-1] > array[j]:
+        vis.swap(j-1, j)
+        array[j-1], array[j] = array[j], array[j-1]
+
   print('after :', array)
 
 if __name__ == '__main__':
