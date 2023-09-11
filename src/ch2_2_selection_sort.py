@@ -10,7 +10,7 @@ def main():
   print('before:', array)
   count = len(array)
 
-  for a in range(1):
+  for a in range(2):
     min_value = array[a]
     min_at = a
     for b in range(a + 1, count):
@@ -20,7 +20,7 @@ def main():
     array[a], array[min_at] = array[min_at], array[a]
     print(f'{min_at=}. swap {a} <=> {min_at}')
 
-  print('after :', array)
+    print('after :', array)
 
 if __name__ == '__main__':
   seed('Hello') # 'Hello' 를 seed 로 고정하여 randint 가 항상 같은 결과가 나오게 한다
