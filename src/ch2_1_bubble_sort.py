@@ -9,8 +9,7 @@ from vis import BubbleSortVisualizer as Visualizer
 def main():
   print('before:', array)
   count = len(array)
-  end = count - 1
-  if True: # 들여쓰기를 위해 쓴다
+  for end in range(count - 1, 0, -1):
     for i in range(end):
       vis.compare(i, i+1)
       if array[i] > array[i+1]:
@@ -18,9 +17,9 @@ def main():
         array[i], array[i+1] = array[i+1], array[i]
   print('after :', array)
 
-''' Bubble 을 한 칸 진행해 본 결과, 다음과 같이 출력된다.
+''' Bubble 을 2중루프로 돌아 보면, 다음과 같이 출력된다.
 before: [71, 30, 18, 51, 77, 37, 3, 93, 90, 48]
-after : [30, 18, 51, 71, 37, 3, 77, 90, 48, 93]
+after : [3, 18, 30, 37, 48, 51, 71, 77, 90, 93]
 '''
 
 if __name__ == '__main__':
