@@ -9,13 +9,17 @@ from vis import BubbleSortVisualizer as Visualizer
 def main():
   print('before:', array)
   count = len(array)
-  for end in range(count - 1, 0, -1):
+  end = count - 1
+  while end > 0:
+    last = 1
     for i in range(end):
       vis.compare(i, i+1)
       if array[i] > array[i+1]:
         vis.swap(i, i+1)        
         array[i], array[i+1] = array[i+1], array[i]
-    vis.bubble_end(end)
+        last = i + 1
+    end = last - 1
+    vis.bubble_end(last)
   vis.bubble_end(0)
   print('after :', array)
 
