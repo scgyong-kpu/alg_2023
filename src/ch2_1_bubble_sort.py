@@ -3,8 +3,8 @@ from data_unsorted import numbers
 # numbers = numbers[:1000]
 
 from random import randint, seed
-# from vis import BubbleSortVisualizer as Visualizer
-from vis import Dummy as Visualizer
+from vis import BubbleSortVisualizer as Visualizer
+# from vis import Dummy as Visualizer
 
 def main():
   print('before:', array)
@@ -12,7 +12,9 @@ def main():
   end = count - 1
   if True: # 들여쓰기를 위해 쓴다
     for i in range(end):
+      vis.compare(i, i+1)
       if array[i] > array[i+1]:
+        vis.swap(i, i+1)        
         array[i], array[i+1] = array[i+1], array[i]
   print('after :', array)
 
