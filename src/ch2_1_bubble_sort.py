@@ -15,6 +15,8 @@ def main():
       if array[i] > array[i+1]:
         vis.swap(i, i+1)        
         array[i], array[i+1] = array[i+1], array[i]
+    vis.bubble_end(end)
+  vis.bubble_end(0)
   print('after :', array)
 
 ''' Bubble 을 2중루프로 돌아 보면, 다음과 같이 출력된다.
