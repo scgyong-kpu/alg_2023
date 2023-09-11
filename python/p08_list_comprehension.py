@@ -19,3 +19,8 @@ print(f'{squares_3=}')
 for sq in squares_3:
   print(sq, end=', ')
 print()
+
+squares_4 = list(map(func, range(10)))
+print('\n-- map 결과는 실제 배열과는 다르다 (배열을 위한 메모리가 할당되지 않으므로 ')
+print('   꼭 list 형태가 필요할 경우 변환해서 사용한다.) --')
+print(f'{squares_4=}')
