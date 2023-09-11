@@ -1,10 +1,12 @@
-from data_unsorted import numbers
-# from data_unsorted_a_lot import numbers
+# from data_unsorted import numbers
+from data_unsorted_a_lot import numbers
 # numbers = numbers[:1000]
 
-from random import randint, seed
-from vis import BubbleSortVisualizer as Visualizer
-# from vis import Dummy as Visualizer
+from random import randint, seed, shuffle
+from time import time
+
+# from vis import BubbleSortVisualizer as Visualizer
+from vis import Dummy as Visualizer
 
 def main():
   print('before:', array)
@@ -23,16 +25,36 @@ def main():
   vis.bubble_end(0)
   print('after :', array)
 
-''' Bubble 을 2중루프로 돌아 보면, 다음과 같이 출력된다.
-before: [71, 30, 18, 51, 77, 37, 3, 93, 90, 48]
-after : [3, 18, 30, 37, 48, 51, 71, 77, 90, 93]
-comparison: 45
-swap: 19
+''' 
+Dummy Visualizer 를 썼을 때
+count=100 elapsed=0.005
+count=1000 elapsed=0.437
+count=2000 elapsed=1.794
+count=3000 elapsed=4.001
+count=4000 elapsed=7.062
 '''
 
 if __name__ == '__main__':
   seed('Hello') # 'Hello' 를 seed 로 고정하여 randint 가 항상 같은 결과가 나오게 한다
   vis = Visualizer('Bubble Sort')
+
+  result = dict()
+  counts = [ 100, 1000, 2000, 3000, 4000 ] #, 5000, 6000, 7000, 8000, 9000, 10000, 15000, 20000 ]
+  for count in counts:
+    array = numbers[:count]
+    shuffle(array)
+    startedOn = time()
+    main()
+    elapsed = time() - startedOn
+    print(f'{count=} {elapsed=:.3f}')
+    result[count] = elapsed
+
+  for count in result.keys():
+    elapsed = result[count]
+    print(f'{count=} {elapsed=:.3f}')
+
+  exit() 
+
   while True:
     count = randint(10, 30)
     array = numbers[:count]
