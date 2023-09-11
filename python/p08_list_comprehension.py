@@ -37,3 +37,13 @@ for i in range(26):
   x, y = randrange(3), randrange(4)  # 12개 배열 중 하나를 랜덤하게 고름
   dim3[y][x].append(ch) # 고른 배열에다가 이번 글자를 추가함
 print(f' after: {dim3=}')
+
+print('\n-- Python 은 class 생성자와 함수 호출 문법 구조가 같으므로 class 이름도 map 에 쓸 수 있다 ')
+class Game:
+  def __init__(self, name):
+    self.name = name
+  def __repr__(self): # 이 객체가 문자열로 표현되어야 할 때 호출되는 함수. 비슷한 것으로 __str__() 도 있다
+    return f'Game("{self.name}")'
+
+games = list(map(Game, "helloworld"))
+print(games)
