@@ -1,32 +1,31 @@
-from data_nearly_sorted_a_lot import nearly as numbers
-# from data_unsorted import numbers
+from data_unsorted import numbers
 # from data_unsorted_a_lot import numbers
-# from vis import SelectionSortVisualizer as Visualizer
+from vis import SelectionSortVisualizer as Visualizer
 # from vis import Dummy as Visualizer
 
 from random import randint, seed, shuffle
 from time import time
 
 def main():
-  # print('before:', array)
+  print('before:', array)
   count = len(array)
 
   for a in range(count):
     min_value = array[a]
     min_at = a
-    # vis.selection(a)
+    vis.selection(a)
     for b in range(a + 1, count):
-      # vis.compare(min_at, b)
+      vis.compare(min_at, b)
       if min_value > array[b]:
         min_value = array[b]
         min_at = b
-        # vis.selection(b)
-    # vis.swap(a, min_at)
+        vis.selection(b)
+    vis.swap(a, min_at)
     array[a], array[min_at] = array[min_at], array[a]
-    # vis.mark_done(a)
-    # print(f'{min_at=}. swap {a} <=> {min_at}')
+    vis.mark_done(a)
+    print(f'{min_at=}. swap {a} <=> {min_at}')
 
-  # print('after :', array)
+  print('after :', array)
 
 '''
 
@@ -52,20 +51,7 @@ count=50000 elapsed=53.683
 
 if __name__ == '__main__':
   seed('Hello') # 'Hello' 를 seed 로 고정하여 randint 가 항상 같은 결과가 나오게 한다
-  # vis = Visualizer('Selection Sort')
-
-  counts = [ 
-    100, 1000, 2000, 3000, 4000, 5000, 
-    6000, 7000, 8000, 9000, 10000, 15000, 
-    20000, 30000, 40000, 50000 ]
-  for count in counts:
-    array = numbers[:count]
-    # shuffle(array)
-    startedOn = time()
-    main()
-    elapsed = time() - startedOn
-    print(f'{count=:5d} {elapsed=:7.3f}')
-  exit() 
+  vis = Visualizer('Selection Sort')
 
   while True:
     count = randint(10, 30)
