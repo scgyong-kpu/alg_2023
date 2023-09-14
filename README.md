@@ -1,11 +1,11 @@
 # alg_2023
-Algorithm Lecture 2023
+Algorithm Lecture 2023 (01반 화10:30 목15:30)
 
 # Progress
 1. **[9/5] Chapter 1 : 알고리즘의 첫걸음**
 2. **[9/7] Chapter 2 : 알고리즘을 배우기 위한 준비**
 3. **[9/12] Python Basic 1 : Keywords, Collections**
-4. [9/14] Python Basic 2 : Module, Libraries
+4. **[9/14] Python Basic 2 : Module, Libraries** - p08-6, p08-7 남았음
 5. [9/19] Ch 6 Sort #1 : Bubble, Selection, Insert, Shell
 6. [9/21] Ch 6 Sort #2 : 실습
 7. [9/26] Ch 6 Sort #3 : Heap, Radix, External
