@@ -1,5 +1,5 @@
-# alg_2023
-Algorithm Lecture 2023 (01반 화10:30 목15:30)
+# alg_2023 (01반 화10:30 목15:30)
+Algorithm Lecture 2023
 
 # Progress
 1. **[9/5] Chapter 1 : 알고리즘의 첫걸음**
