@@ -6,7 +6,7 @@ Algorithm Lecture 2023
 2. **[9/5] Chapter 2 : 알고리즘을 배우기 위한 준비**
 3. **[9/11] Python Basic 1 : Keywords, Collections** - p02 Dictionary 까지 진행.
 4. **[9/12] Python Basic 2 : Module, Libraries**
-5. [9/18] Ch 6 Sort #1 : Bubble, Selection, Insert, Shell
+5. **[9/18] Ch 6 Sort #1 : Bubble, Selection, Insert, Shell**
 6. [9/19] Ch 6 Sort #2 : 실습
 7. [9/25] Ch 6 Sort #3 : Heap, Radix, External
 8. [9/26] Ch 6 Sort #4 : 실습
