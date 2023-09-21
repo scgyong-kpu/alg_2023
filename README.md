@@ -7,7 +7,7 @@ Algorithm Lecture 2023
 3. **[9/12] Python Basic 1 : Keywords, Collections**
 4. **[9/14] Python Basic 2 : Module, Libraries**
 5. **[9/19] Ch 6 Sort #1 : Bubble, Selection, Insert, Shell**
-6. [9/21] Ch 6 Sort #2 : 실습
+6. **[9/21] Ch 6 Sort #2 : 실습**
 7. [9/26] Ch 6 Sort #3 : Heap, Radix, External
 8. [9/28] Ch 6 Sort #4 : 실습
 9. [10/3] Ch 3 D&C #1 : Merge, Quick
