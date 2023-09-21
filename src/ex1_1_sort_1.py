@@ -9,6 +9,11 @@ array = [
 def sort_bubble(arr):
   print('-' * 60)
   print(f'before: {arr}')
+  count = len(arr)
+  for a in range(count - 1):
+    for b in range(count - 1 - a):
+      if ??: ????
+
   print(f'after : {arr}')
 
 def sort_select(arr):
@@ -19,11 +24,16 @@ def sort_select(arr):
 def sort_insert(arr):
   print('-' * 60)
   print(f'before: {arr}')
+  while ???: # 1st loop: 1(두번째)부터 끝까지 주인공 시켜준다
+    while ???: # 2nd loop: 주인공을 가능한곳까지 왼쪽으로 보낸다
   print(f'after : {arr}')
 
 def sort_shell(arr):
   print('-' * 60)
   print(f'before: {arr}')
+  while ???: # 1st loop: 갭을 점점 줄여서 1까지 돌린다
+    while ???: # 2nd loop: 갭부터 끝까지 주인공 시켜준다
+      while ???: # 주인공을 가능한곳까지 왼쪽으로 보낸다
   print(f'after : {arr}')
 
 def main():
