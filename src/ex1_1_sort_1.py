@@ -19,6 +19,10 @@ def sort_bubble(arr):
 def sort_select(arr):
   print('-' * 60)
   print(f'before: {arr}')
+  while ???: #1st loop: 최소값을 n번 찾는다
+    while ???: #2nd loop: 가장 작은 수의 위치를 찾는다
+      pass
+    # 맨 왼쪽 것과 바꾼다
   print(f'after : {arr}')
 
 def sort_insert(arr):
