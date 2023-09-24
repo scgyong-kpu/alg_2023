@@ -43,8 +43,6 @@ def radix_lower_char_msd(array, left, right, depth=0):
   if depth > 0: print(' ' * depth, f'{depth=} {left=}, {right=}', array[left:right+1])
   if depth > 0: print(' ' * depth, '-' * 30)
 
-  if depth >= 2: return
-
   for i in range(27):
     sub_l = left + counts[i]
     sub_r = left + counts[i+1] - 1 if i < 26 else right
