@@ -9,7 +9,7 @@ def main():
   print('before:', array)
   count = len(array)
   print('after :', array)
-  vis.draw()
+  vis.build_tree()
 
 
 if __name__ == '__main__':
