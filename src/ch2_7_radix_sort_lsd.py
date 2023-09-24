@@ -7,6 +7,7 @@ from random import randint, seed, shuffle
 from math import log10, ceil
 
 def main():
+  global array              # result 를 다시 array 에 복사하므로 global 선언이 필요하다
   print('before:', array)
   count = len(array)
 
@@ -14,13 +15,13 @@ def main():
   max_value = max(array)                       # 제일 큰 수가 몇인지
   radix_count = ceil(log10(max_value))         # 제일 큰 수는 몇자리 수인지
   print(f'{max_value=} {log10(max_value)=} {radix_count=}')
-  counts = [0] * 10                            # 10진수 기준으로 셀 예정이므로 10개짜리 배열 생성
 
   global result
   result = []
 
-  div = 1                         # div 는 1, 10, 100 등으로 증가할 예정이다
-  for pos in range(1):            # 임시로 div=1 일 때만 시도한다
+  div = 1                         # div 는 1, 10, 100 등으로 증가한다
+  for pos in range(radix_count):  # radix_count 만큼 진행한다
+    counts = [0] * 10             # 10개짜리 배열 생성 - 자리수마다 초기화해야 한다
     for i in range(count):
       v = array[i] // div % 10    # div 의 자리 숫자를 구하면 v 는 0~9 의 숫자가 된다
       counts[v] += 1
@@ -44,6 +45,11 @@ def main():
       vis.set_inc_index(div, i, False)
       result[at] = array[i]                  # 구한 인덱스에 해당 값을 넣는다
       # print(f'{i=:2d} {v=:2d} {result=}')
+
+    vis.result_to_array()
+    array = result                # 결과를 다시 array 에 넣고 다음 자리수 정렬을 한다
+    result = []                   # 결과는 비어 있는 배열로 초기화한다
+    div *= 10                     # 1 다음은 10, 그 다음은 100 이 되도록 해야 하니 10배가 되도록 한다
 
   # print('after :', array)
 
