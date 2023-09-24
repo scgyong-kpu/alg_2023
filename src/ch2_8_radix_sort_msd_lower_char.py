@@ -34,10 +34,13 @@ words = [
 ]
 
 # 단어에 사용된 글자는 e~o 의 11글자 뿐이다
-BASE = ord('e') - 1 # ascii code of 'e' = 101
+FIRST_CHAR = 'e'
+LAST_CHAR = 'o'
+BASE = ord(FIRST_CHAR) - 1
+char_count = ord(LAST_CHAR) - ord(FIRST_CHAR) + 1
 
 def radix_lower_char_msd(array, left, right, depth=0):
-  counts = [0 for _ in range(12)] # 알파벳 'e' 이면 1, 'o' 면 11. 없으면 0. 총 12가지.
+  counts = [0 for _ in range(char_count + 1)]
   for i in range(left, right+1):
     string = array[i]
     str_len = len(string)
@@ -47,7 +50,7 @@ def radix_lower_char_msd(array, left, right, depth=0):
     counts[slot] += 1
 
   # print(' ' * depth, f'{counts=}')
-  for i in range(11):
+  for i in range(char_count):
     counts[i+1] += counts[i]
   # print(' ' * depth, f'index={counts}')
 
@@ -65,9 +68,9 @@ def radix_lower_char_msd(array, left, right, depth=0):
   if depth > 0: print(' ' * depth, f'{depth=} {left=}, {right=}', array[left:right+1])
   if depth > 0: print(' ' * depth, '-' * 30)
 
-  for i in range(12):
+  for i in range(char_count + 1):
     sub_l = left + counts[i]
-    sub_r = left + counts[i+1] - 1 if i < 11 else right
+    sub_r = left + counts[i+1] - 1 if i < char_count else right
     # char = chr(i+BASE) if i > 0 else ' '
     # needs_recursion = 'Needs Recursion' if sub_l < sub_r else '-'
     # sub_arr = array[sub_l:sub_r+1]
