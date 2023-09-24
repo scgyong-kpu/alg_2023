@@ -29,6 +29,21 @@ def radix_lower_char_msd(array, left, right, depth=0):
     counts[i+1] += counts[i]
   print(' ' * depth, f'index={counts}')
 
+  for i in range(right, left-1, -1):
+    string = array[i]
+    str_len = len(string)
+    slot = (ord(string[depth]) - BASE) if str_len > depth else 0 # slot 은 [0~26] 의 값을 가진다 (26 포함)
+    # print(f'{depth=} {str_len=:<2d} {slot=:<2d} {string=}')
+    counts[slot] -= 1         # slot 번째 인덱스를 하나 사용할 것이므로 1 줄인다
+    at = left + counts[slot]  # temp 에 저장할 위치는 left 로부터 counts 만큼 떨어져 있다
+    temp[at] = array[i]       # temp 내에 정렬된 결과가 들어가게 한다
+
+  print(' ' * depth, f'{depth=} {left=}, {right=}', array[left:right+1])
+  array[left:right+1] = temp[left:right+1] # [left~right] 까지의 정렬된 결과를 array 로 복사한다
+  print(' ' * depth, '-' * 30)
+  print(' ' * depth, f'{depth=} {left=}, {right=}', array[left:right+1])
+  print(' ' * depth, '-' * 30)
+
 word_count = len(words)
 temp = [0 for _ in range(word_count)]
 radix_lower_char_msd(words, 0, word_count-1)
