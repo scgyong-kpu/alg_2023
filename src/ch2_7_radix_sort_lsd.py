@@ -57,8 +57,8 @@ if __name__ == '__main__':
   seed('HelloCountSort')
   vis = Visualizer('Radix Sort: LSD')
   while True:
-    kind = 10000                               # 0~9999사이의 수 생성
-    count = randint(30, 100)                   # 30개~100개 를 생성
+    kind = 100000                           # 0~99999사이의 수 생성
+    count = randint(30, 80)                 # 30개~80개 를 생성
     print(f'Creating data: {kind=} {count=}')
     array = list(map(lambda x: randint(1, kind), range(count)))
     vis.setup(vis.get_main_module())
