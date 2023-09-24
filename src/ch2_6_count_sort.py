@@ -14,6 +14,12 @@ def main():
   counts = [0] * (max_value + 1)
   print(f'init  - {counts=}') 
 
+  for i in range(count):
+    v = array[i]
+    counts[v] += 1
+    vis.set_inc_index(i)
+
+  vis.set_inc_index(-1, False)
   print('after :', array)
 
 if __name__ == '__main__':
