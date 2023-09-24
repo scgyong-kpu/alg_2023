@@ -38,7 +38,10 @@ def main():
     # 첫번째와 마지막의 원소를 교환한다
     array[0], array[last_sort_index] = array[last_sort_index], array[0] 
     vis.set_tree_size(last_sort_index)
+    heapify(0, last_sort_index) # Root 에 새로운 녀석이 들어왔으므로 Heap 이 되기 위해 내린다
+    last_sort_index -= 1
 
+  vis.draw()
   print('after :', array)
 
 
