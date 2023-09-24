@@ -30,7 +30,14 @@ def main():
   for n in range(last_parent_index, -1, -1):
     vis.set_root(n)
     heapify(n, count)
-  vis.draw()
+
+  last_sort_index = count - 1
+  if last_sort_index > 0:
+    vis.compare(0, last_sort_index)
+    vis.swap(0, last_sort_index)
+    # 첫번째와 마지막의 원소를 교환한다
+    array[0], array[last_sort_index] = array[last_sort_index], array[0] 
+    vis.set_tree_size(last_sort_index)
 
   print('after :', array)
 
