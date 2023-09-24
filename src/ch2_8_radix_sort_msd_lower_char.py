@@ -38,21 +38,23 @@ def radix_lower_char_msd(array, left, right, depth=0):
     at = left + counts[slot]  # temp 에 저장할 위치는 left 로부터 counts 만큼 떨어져 있다
     temp[at] = array[i]       # temp 내에 정렬된 결과가 들어가게 한다
 
-  print(' ' * depth, f'{depth=} {left=}, {right=}', array[left:right+1])
+  if depth > 0: print(' ' * depth, f'{depth=} {left=}, {right=}', array[left:right+1])
   array[left:right+1] = temp[left:right+1] # [left~right] 까지의 정렬된 결과를 array 로 복사한다
-  print(' ' * depth, '-' * 30)
-  print(' ' * depth, f'{depth=} {left=}, {right=}', array[left:right+1])
-  print(' ' * depth, '-' * 30)
+  if depth > 0: print(' ' * depth, f'{depth=} {left=}, {right=}', array[left:right+1])
+  if depth > 0: print(' ' * depth, '-' * 30)
+
+  if depth >= 1: return
 
   for i in range(27):
     sub_l = left + counts[i]
     sub_r = left + counts[i+1] - 1 if i < 26 else right
-    char = chr(i+BASE) if i > 0 else ' '
-    needs_recursion = 'Needs Recursion' if sub_l < sub_r else '-'
-    sub_arr = array[sub_l:sub_r+1]
-    print(' ' * depth, f'{char=} {sub_l=} {sub_r=} {needs_recursion} {sub_arr}')
-
+    # char = chr(i+BASE) if i > 0 else ' '
+    # needs_recursion = 'Needs Recursion' if sub_l < sub_r else '-'
+    # sub_arr = array[sub_l:sub_r+1]
+    # print(' ' * depth, f'{char=} {sub_l=} {sub_r=} {needs_recursion} {sub_arr}')
+    if sub_l < sub_r:
+      radix_lower_char_msd(array, sub_l, sub_r, depth+1)
 word_count = len(words)
 temp = [0 for _ in range(word_count)]
 radix_lower_char_msd(words, 0, word_count-1)
-# print(words)
+print(words)
