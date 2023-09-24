@@ -19,7 +19,13 @@ def main():
     counts[v] += 1
     vis.set_inc_index(i)
 
-  vis.set_inc_index(-1, False)
+  vis.set_inc_index(-1)
+  for i in range(max_value):
+    counts[i+1] += counts[i]
+    vis.draw()
+    vis.wait(1000)
+
+
   print('after :', array)
 
 if __name__ == '__main__':
