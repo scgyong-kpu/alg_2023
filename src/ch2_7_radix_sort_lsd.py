@@ -1,6 +1,6 @@
 # from data_unsorted import numbers
 from data_unsorted_a_lot import numbers
-# from vis import RadixSortLsdVisualizer as Visualizer
+from vis import RadixSortLsdVisualizer as Visualizer
 # from vis import Dummy as Visualizer
 from time import time
 from random import randint, seed, shuffle
@@ -8,13 +8,13 @@ from math import log10, ceil
 
 def main():
   global array              # result 를 다시 array 에 복사하므로 global 선언이 필요하다
-  # print('before:', array)
+  print('before:', array)
   count = len(array)
 
   global counts
   max_value = max(array)                       # 제일 큰 수가 몇인지
   radix_count = ceil(log10(max_value + 1))     # 제일 큰 수는 몇자리 수인지
-  # print(f'{max_value=} {log10(max_value)=} {radix_count=}')
+  print(f'{max_value=} {log10(max_value)=} {radix_count=}')
 
   global result
   result = []
@@ -25,16 +25,16 @@ def main():
     for i in range(count):
       v = array[i] // div % 10    # div 의 자리 숫자를 구하면 v 는 0~9 의 숫자가 된다
       counts[v] += 1
-      # vis.set_inc_index(div, i)
+      vis.set_inc_index(div, i)
 
-    # print(f'counts= {counts}') 
-    # vis.set_inc_index(div, -1)
+    print(f'counts= {counts}') 
+    vis.set_inc_index(div, -1)
     for i in range(9):            # 10진수는 숫자가 0~9 까지 10개가 있으므로 합산은 0~8 까지만 하면 된다
       counts[i+1] += counts[i]
-      # vis.draw()
-      # vis.wait(1000)
+      vis.draw()
+      vis.wait(1000)
 
-    # print(f'indices={counts}') 
+    print(f'indices={counts}') 
 
     result = [None] * count
 
@@ -42,16 +42,16 @@ def main():
       v = array[i] // div % 10    # div 의 자리 숫자를 구하면 v 는 0~9 의 숫자가 된다
       at = counts[v] - 1              # 어디에 넣어야 하는지 구한다. counts[v] 는 v 가 들어가야 할 index+1 을 담고 있다
       counts[v] -= 1                  # index 는 1 빼준다
-      # vis.set_inc_index(div, i, False)
+      vis.set_inc_index(div, i, False)
       result[at] = array[i]                  # 구한 인덱스에 해당 값을 넣는다
       # print(f'{i=:2d} {v=:2d} {result=}')
 
-    # vis.result_to_array()
+    vis.result_to_array()
     array = result                # 결과를 다시 array 에 넣고 다음 자리수 정렬을 한다
     result = []                   # 결과는 비어 있는 배열로 초기화한다
     div *= 10                     # 1 다음은 10, 그 다음은 100 이 되도록 해야 하니 10배가 되도록 한다
 
-  # print('after :', array)
+  print('after :', array)
 '''성능측정
 count=100    elapsed=0.000
 count=1000   elapsed=0.003
@@ -84,28 +84,6 @@ count=10000000 elapsed=45.267
 
 if __name__ == '__main__':
   seed('HelloCountSort')
-  counts = [ 
-    # 100, 1000, 2000, 3000, 4000, 5000, 
-    # 6000, 7000, 8000, 9000, 10000, 15000, 
-    # 20000, 30000, 40000, 50000,
-    # 100000, 200000, 300000, 400000, 500000,
-    1000000, 2000000, 3000000, 4000000, 5000000,
-    10000000,
-  ]
-  for count in counts:
-    startedOn = time()
-    array = list(map(lambda x: randint(1, count), range(count)))
-    elapsed = time() - startedOn
-    print(f'Creating List: {count=:<6d} {elapsed=:.3f}')
-    # shuffle(array)
-    # print('before:', array)
-    startedOn = time()
-    main()
-    elapsed = time() - startedOn
-    # print('after :', array)
-    print(f'{count=:<6d} {elapsed=:.3f}')
-  exit() 
-
   vis = Visualizer('Radix Sort: LSD')
   while True:
     kind = 100000                           # 0~99999사이의 수 생성
