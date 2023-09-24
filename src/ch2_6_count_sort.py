@@ -25,7 +25,18 @@ def main():
     vis.draw()
     vis.wait(1000)
 
+  global result
+  result = [None] * count
 
+  for i in range(count-1, -1, -1):  # 거꾸로 진행
+    v = array[i]                    # 값을 가져다가
+    at = counts[v] - 1              # 어디에 넣어야 하는지 구한다. counts[v] 는 v 가 들어가야 할 index+1 을 담고 있다
+    counts[v] -= 1                  # index 는 1 빼준다
+    vis.set_inc_index(i, False)
+    result[at] = v                  # 구한 인덱스에 해당 값을 넣는다
+    # print(f'{i=:2d} {v=:2d} {result=}')
+
+  vis.set_inc_index(-1, False)
   print('after :', array)
 
 if __name__ == '__main__':
