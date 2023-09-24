@@ -16,14 +16,25 @@ def main():
   print(f'{max_value=} {log10(max_value)=} {radix_count=}')
   counts = [0] * 10                            # 10진수 기준으로 셀 예정이므로 10개짜리 배열 생성
 
-  div = 1
-  for pos in range(1):
+  global result
+  result = []
+
+  div = 1                         # div 는 1, 10, 100 등으로 증가할 예정이다
+  for pos in range(1):            # 임시로 div=1 일 때만 시도한다
     for i in range(count):
-      v = array[i] // div % 10
+      v = array[i] // div % 10    # div 의 자리 숫자를 구하면 v 는 0~9 의 숫자가 된다
       counts[v] += 1
       vis.set_inc_index(div, i)
 
-    print(f'{counts=}') 
+    print(f'counts= {counts}') 
+    vis.set_inc_index(div, -1)
+    for i in range(9):            # 10진수는 숫자가 0~9 까지 10개가 있으므로 합산은 0~8 까지만 하면 된다
+      counts[i+1] += counts[i]
+      vis.draw()
+      vis.wait(1000)
+
+    print(f'indices={counts}') 
+
 
   # print('after :', array)
 
