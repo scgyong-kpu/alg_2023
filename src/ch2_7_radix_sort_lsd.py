@@ -1,6 +1,6 @@
 # from data_unsorted import numbers
 from data_unsorted_a_lot import numbers
-from vis import CountSortVisualizer as Visualizer
+from vis import RadixSortLsdVisualizer as Visualizer
 # from vis import Dummy as Visualizer
 from time import time
 from random import randint, seed, shuffle
@@ -15,7 +15,15 @@ def main():
   radix_count = ceil(log10(max_value))         # 제일 큰 수는 몇자리 수인지
   print(f'{max_value=} {log10(max_value)=} {radix_count=}')
   counts = [0] * 10                            # 10진수 기준으로 셀 예정이므로 10개짜리 배열 생성
-  print(f'init  - {counts=}') 
+
+  div = 1
+  for pos in range(1):
+    for i in range(count):
+      v = array[i] // div % 10
+      counts[v] += 1
+      vis.set_inc_index(div, i)
+
+    print(f'{counts=}') 
 
   # print('after :', array)
 
