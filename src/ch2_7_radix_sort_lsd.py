@@ -13,7 +13,7 @@ def main():
 
   global counts
   max_value = max(array)                       # 제일 큰 수가 몇인지
-  radix_count = ceil(log10(max_value))         # 제일 큰 수는 몇자리 수인지
+  radix_count = ceil(log10(max_value + 1))     # 제일 큰 수는 몇자리 수인지
   print(f'{max_value=} {log10(max_value)=} {radix_count=}')
 
   global result
