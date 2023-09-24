@@ -49,7 +49,8 @@ def radix_lower_char_msd(array, left, right, depth=0):
     sub_r = left + counts[i+1] - 1 if i < 26 else right
     char = chr(i+BASE) if i > 0 else ' '
     needs_recursion = 'Needs Recursion' if sub_l < sub_r else '-'
-    print(' ' * depth, f'{char=} {sub_l=} {sub_r=} {needs_recursion}')
+    sub_arr = array[sub_l:sub_r+1]
+    print(' ' * depth, f'{char=} {sub_l=} {sub_r=} {needs_recursion} {sub_arr}')
 
 word_count = len(words)
 temp = [0 for _ in range(word_count)]
