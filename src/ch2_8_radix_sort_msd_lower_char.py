@@ -21,13 +21,13 @@ def radix_lower_char_msd(array, left, right, depth=0):
     str_len = len(string)
     slot = (ord(string[depth]) - BASE) if str_len > depth else 0
     char = string[depth] if str_len>depth else ' '
-    print(' ' * depth, f'{depth=} {str_len=:<2d} {char=} {slot=:<2d} {string=}')
+    # print(' ' * depth, f'{depth=} {str_len=:<2d} {char=} {slot=:<2d} {string=}')
     counts[slot] += 1
 
-  print(' ' * depth, f'{counts=}')
+  # print(' ' * depth, f'{counts=}')
   for i in range(26):
     counts[i+1] += counts[i]
-  print(' ' * depth, f'index={counts}')
+  # print(' ' * depth, f'index={counts}')
 
   for i in range(right, left-1, -1):
     string = array[i]
