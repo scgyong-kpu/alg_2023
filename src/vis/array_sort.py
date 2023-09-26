@@ -37,6 +37,7 @@ class SortVisualizer(ArrayVisualizer):
     self.swap_i1, self.swap_i2 = -1, -1
     self.compare_count = 0
     self.swap_count = 0
+    self.anim_progress = 0
 
   def get_item_context(self, index):
     if index in self.item_contexts:
