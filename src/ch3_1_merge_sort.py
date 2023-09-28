@@ -6,6 +6,11 @@ from random import randint, seed, shuffle
 def main():
   print('before:', array)
   count = len(array)
+  mid = count // 2
+  array[0:mid] = sorted(array[0:mid])
+  array[mid:] = sorted(array[mid:])
+
+  vis.push(0, mid-1, count-1)
   print('after :', array)
 
 if __name__ == '__main__':
