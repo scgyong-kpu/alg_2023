@@ -6,13 +6,17 @@ from random import randint, seed, shuffle
 def main():
   print('before:', array)
   count = len(array)
-  mid = count // 2
-  array[0:mid] = sorted(array[0:mid]) # 왼쪽 팀 선수들이 약한 순서대로 정렬되어 있다고 가정한다
-  array[mid:] = sorted(array[mid:])   # 오른쪽 팀 선수들도 약한 순서대로 정렬되어 있다고 가정한다
-
-  vis.push(0, mid-1, count-1)
-  merge(0, mid, count-1)
+  mergeSort(0, count-1)       # 전체 팀을 정렬한다
   print('after :', array)
+
+def mergeSort(left, right): #right=inclusive
+  if right <= left: return    # 정렬할 선수들이 없거나 한병뿐이면 할 필요가 없다
+  mid = (left + right) // 2   # 목록을 절반으로 나눈다
+  vis.push(left, mid, right)
+  mergeSort(left, mid)        # 왼쪽 팀을 정렬한다
+  mergeSort(mid+1, right)     # 오른쪽 팀을 정렬한다
+  merge(left, mid+1, right)   # 두 팀을 합병한다
+  vis.pop()
 
 def merge(left, right, end): # 왼쪽은 [left~right-1], 오른쪽은 [right~end] 이고 end 는 inclusive 이다
   merged = []                        # 임시 저장할 정렬 결과 목록을 준비한다. 
@@ -45,8 +49,6 @@ def merge(left, right, end): # 왼쪽은 [left~right-1], 오른쪽은 [right~end
     array[l] = n           # 원래의 배열에 옮겨 담는다
     l += 1
     # vis.erase_merged()
-
-  vis.pop()
 
 if __name__ == '__main__':
   seed('Hello')
