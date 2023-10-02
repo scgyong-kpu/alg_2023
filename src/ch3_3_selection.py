@@ -17,8 +17,15 @@ def main():
 def selection(left, right, k): #right=inclusive
   print(f'{left=} {right=} {k=}')
   vis.push(left, right, k)
-  pi = qs.partition(left, right)
+  pi = qs.partition(left, right) # pivot 의 위치를 구한다 (Pivot Index)
   vis.set_pivot(pi)
+  small_group_size = pi - left   # pi 를 기준으로 왼쪽 그룹의 크기를 구해둔다
+  if k == small_group_size + 1:  # pi 의 왼쪽 그룹의 크기가 sgs 인데 sgs+1번째를 찾는다면
+    return array[pi]             # pi 가 찾으려는 값의 위치이다
+  if k <= small_group_size:            # 왼쪽 그룹의 수보다 k 가 작으면
+    return selection(left, pi - 1, k)  # 왼쪽 그룹에서 k 번째를 다시 찾는다
+  else:
+    return selection(pi + 1, right, k - small_group_size - 1) # 오른쪽 그룹에서 k-sgs-1 번째를 찾는다
 
 if __name__ == '__main__':
   seed('none')
