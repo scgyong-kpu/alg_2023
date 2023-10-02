@@ -18,7 +18,7 @@ def mergeSort(left, right): #right=inclusive
     if array[left] > array[right]:
       # vis.swap(left, right)
       array[left], array[right] = array[right], array[left]
-      return
+    return
   mid = (left + right) // 2   # 목록을 절반으로 나눈다
   # vis.push(left, mid, right)
   mergeSort(left, mid)        # 왼쪽 팀을 정렬한다
@@ -62,50 +62,31 @@ def merge(left, right, end): # 왼쪽은 [left~right-1], 오른쪽은 [right~end
     # vis.erase_merged()
 
 ''' 성능 측정
-count=100     elapsed=0.000 0.000 0.000
-count=1000    elapsed=0.003 0.003 0.003
-count=2000    elapsed=0.006 0.006 0.004
-count=3000    elapsed=0.009 0.009 0.007
-count=4000    elapsed=0.013 0.012 0.010
-count=5000    elapsed=0.016 0.016 0.013
-count=6000    elapsed=0.020 0.019 0.016
-count=7000    elapsed=0.024 0.021 0.019
-count=8000    elapsed=0.026 0.024 0.022
-count=9000    elapsed=0.031 0.027 0.025
-count=10000   elapsed=0.035 0.030 0.029
-count=15000   elapsed=0.054 0.045 0.043
-count=20000   elapsed=0.074 0.065 0.061
-count=30000   elapsed=0.116 0.095 0.091
-count=40000   elapsed=0.159 0.134 0.134
-count=50000   elapsed=0.196 0.172 0.157
-count=100000  elapsed=0.442 0.377 0.368
-count=200000  elapsed=0.898 0.805 0.763
-count=300000  elapsed=1.439 1.243 1.186
-count=400000  elapsed=2.111 1.679 1.656
-count=500000  elapsed=2.717 2.115 2.049
-count=1000000 elapsed=5.684 4.362 4.287
-count=100     elapsed=0.000
-count=1000    elapsed=0.003
-count=2000    elapsed=0.004
-count=3000    elapsed=0.007
-count=4000    elapsed=0.010
-count=5000    elapsed=0.013
-count=6000    elapsed=0.016
-count=7000    elapsed=0.019
-count=8000    elapsed=0.022
-count=9000    elapsed=0.025
-count=10000   elapsed=0.029
-count=15000   elapsed=0.043
-count=20000   elapsed=0.061
-count=30000   elapsed=0.091
-count=40000   elapsed=0.134
-count=50000   elapsed=0.157
-count=100000  elapsed=0.368
-count=200000  elapsed=0.763
-count=300000  elapsed=1.186
-count=400000  elapsed=1.656
-count=500000  elapsed=2.049
-count=1000000 elapsed=4.287
+                      orig  slice 2only bugfx
+count=100     elapsed=0.000 0.000 0.000 0.001
+count=1000    elapsed=0.003 0.003 0.003 0.002
+count=2000    elapsed=0.006 0.006 0.004 0.005
+count=3000    elapsed=0.009 0.009 0.007 0.007
+count=4000    elapsed=0.013 0.012 0.010 0.009
+count=5000    elapsed=0.016 0.016 0.013 0.012
+count=6000    elapsed=0.020 0.019 0.016 0.015
+count=7000    elapsed=0.024 0.021 0.019 0.019
+count=8000    elapsed=0.026 0.024 0.022 0.022
+count=9000    elapsed=0.031 0.027 0.025 0.025
+count=10000   elapsed=0.035 0.030 0.029 0.026
+count=15000   elapsed=0.054 0.045 0.043 0.040
+count=20000   elapsed=0.074 0.065 0.061 0.057
+count=30000   elapsed=0.116 0.095 0.091 0.089
+count=40000   elapsed=0.159 0.134 0.134 0.114
+count=50000   elapsed=0.196 0.172 0.157 0.149
+count=100000  elapsed=0.442 0.377 0.368 0.329
+count=200000  elapsed=0.898 0.805 0.763 0.698
+count=300000  elapsed=1.439 1.243 1.186 1.099
+count=400000  elapsed=2.111 1.679 1.656 1.591
+count=500000  elapsed=2.717 2.115 2.049 1.969
+count=1000000 elapsed=5.684 4.362 4.287 4.068
+
+[Finished in 11.9s]
 '''
 if __name__ == '__main__':
   seed('Hello')
