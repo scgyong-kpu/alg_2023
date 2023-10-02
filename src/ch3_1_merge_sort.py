@@ -53,28 +53,28 @@ def merge(left, right, end): # 왼쪽은 [left~right-1], 오른쪽은 [right~end
     # vis.erase_merged()
 
 ''' 성능 측정
-count=100 elapsed=0.000
-count=1000 elapsed=0.003
-count=2000 elapsed=0.007
-count=3000 elapsed=0.010
-count=4000 elapsed=0.014
-count=5000 elapsed=0.017
-count=6000 elapsed=0.021
-count=7000 elapsed=0.025
-count=8000 elapsed=0.028
-count=9000 elapsed=0.030
-count=10000 elapsed=0.034
-count=15000 elapsed=0.052
-count=20000 elapsed=0.080
-count=30000 elapsed=0.115
-count=40000 elapsed=0.158
-count=50000 elapsed=0.196
-count=100000 elapsed=0.438
-count=200000 elapsed=0.926
-count=300000 elapsed=1.462
-count=400000 elapsed=2.075
-count=500000 elapsed=2.697
-count=1000000 elapsed=5.786
+count=100    elapsed=0.000
+count=1000   elapsed=0.003
+count=2000   elapsed=0.006
+count=3000   elapsed=0.009
+count=4000   elapsed=0.013
+count=5000   elapsed=0.016
+count=6000   elapsed=0.020
+count=7000   elapsed=0.024
+count=8000   elapsed=0.026
+count=9000   elapsed=0.031
+count=10000  elapsed=0.035
+count=15000  elapsed=0.054
+count=20000  elapsed=0.074
+count=30000  elapsed=0.116
+count=40000  elapsed=0.159
+count=50000  elapsed=0.196
+count=100000 elapsed=0.442
+count=200000 elapsed=0.898
+count=300000 elapsed=1.439
+count=400000 elapsed=2.111
+count=500000 elapsed=2.717
+count=1000000 elapsed=5.684
 '''
 if __name__ == '__main__':
   seed('Hello')
