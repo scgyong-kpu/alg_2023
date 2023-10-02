@@ -12,8 +12,12 @@ def main():
   qs.vis = vis
   print('before:', array)
   count = len(array)
-  vis.push(0, count-1, n_th)
-  pi = qs.partition(0, count-1)
+  value = selection(0, count-1, n_th)
+
+def selection(left, right, k): #right=inclusive
+  print(f'{left=} {right=} {k=}')
+  vis.push(left, right, k)
+  pi = qs.partition(left, right)
   vis.set_pivot(pi)
 
 if __name__ == '__main__':
