@@ -5,9 +5,16 @@ from vis import SelectionVisualizer as Visualizer
 from time import time
 from random import randint, seed, shuffle
 
+import ch3_2_quick_sort as qs
+
 def main():
+  qs.array = array
+  qs.vis = vis
   print('before:', array)
   count = len(array)
+  vis.push(0, count-1, n_th)
+  pi = qs.partition(0, count-1)
+  vis.set_pivot(pi)
 
 if __name__ == '__main__':
   seed('none')
@@ -18,7 +25,7 @@ if __name__ == '__main__':
     shuffle(array)
     n_th = randint(1, count)
     # array=[4,8,10,2,1,3]
-    vis.setup(vis.get_main_module())
+    vis.setup(qs)    
     main()
     vis.draw()
     again = vis.end()
