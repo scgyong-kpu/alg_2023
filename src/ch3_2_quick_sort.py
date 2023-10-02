@@ -7,13 +7,21 @@ from random import randint, seed, shuffle
 
 def main():
   print('before:', array)
-  count = len(array)
 
-  vis.push(0, count-1)
-  pivot = partition(0, count-1)
-  vis.set_pivot(pivot)
+  count = len(array)
+  quickSort(0, count-1)
 
   print('after :', array)
+
+def quickSort(left, right): #q=inclusive
+  if left == right: vis.fix(left)  # 정렬 대상이 하나뿐이라면 확정해도 좋다
+  if left >= right: return         # 정렬할 것이 없으면 할 일이 없다
+  vis.push(left, right)
+  pivot = partition(left, right)   # pivot 위치를 결정해 온다
+  vis.set_pivot(pivot)
+  quickSort(left, pivot-1)  # pivot 보다 왼쪽 그룹을 다시 quickSort 한다
+  quickSort(pivot+1, right) # pivot 보다 오른쪽 그룹을 다시 quickSort 한다
+  vis.pop()
 
 def partition(left, right):
 
