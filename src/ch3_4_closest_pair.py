@@ -72,6 +72,35 @@ def closest_pair(arr, left, right):
   vis.compare(rs,re,rd)
 
   s, e, d = (ls, le, ld) if ld <= rd else (rs, re, rd) # 두 그룹의 해 중에서 더 가까운 것을 구한다
+
+
+  cx1 = arr[mid].x - d # 가운데 점에서 d 만큼 왼쪽에 있는 좌표
+  cx2 = arr[mid].x + d # 가운데 점에서 d 만큼 오른쪽에 있는 좌표
+
+  index1 = min(c.index for c in cities if c.x >= cx1 and c.index >= left) 
+  # left 이상의 인덱스 이고 x 좌표가 cx1 이상인 점들 중 가장 왼쪽 점의 인덱스
+  index2 = max(c.index for c in cities if c.x <= cx2 and c.index <= right)
+  # right 이하의 인덱스 이고 x 좌표가 cx2 이하인 점들 중 가장 오른쪽 점의 인덱스
+
+  strip = [c for c in y_aligned if c.index >= index1 and c.index <= index2 ]  
+  # index1 ~ index2 사이의 점들을 y 좌표 순서대로 정렬한 것
+  vis.set_strip(strip, cx1, cx2 )
+
+  n_strip = len(strip)
+  for s1 in range(n_strip):    # y좌표로 정렬된 strip 들을 n*n 으로 돌면서
+    c1 = strip[s1]
+    for s2 in range(s1 + 1, n_strip):
+      c2 = strip[s2]
+      dx = c1.x - c2.x
+      dy = c1.y - c2.y
+      dist = sqrt(dx**2+dy**2) # c1 과 c2 사이의 거리를 구한다
+      vis.compare(c1.index, c2.index, sqrt(dx**2+dy**2))
+      if d > dist:             # 기존의 최단거리보다 작으면
+        d = dist               # 정보를 업데이트한다
+        s, e = c1.index, c2.index
+
+  vis.set_strip()
+
   vis.set_closest(left, right, s, e, d)
   vis.pop()
   return s, e, d                               # 그것이 이번의 해이다 (?)
