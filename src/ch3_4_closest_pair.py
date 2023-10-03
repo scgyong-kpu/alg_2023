@@ -88,7 +88,7 @@ if __name__ == '__main__':
   vis = Visualizer('Closest Pair')
   while True:
     beg = randint(0, 100)
-    end = beg+4 #randint(beg+10, beg+20) # 4개로 바꿔본다
+    end = beg+5 #randint(beg+10, beg+20) # 5개로 바꿔본다
     cities = five_letter_cities[beg:end]
     vis.setup(vis.get_main_module())
     main()
