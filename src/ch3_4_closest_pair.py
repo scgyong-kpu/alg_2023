@@ -91,8 +91,15 @@ def closest_pair(arr, left, right):
     c1 = strip[s1]
     for s2 in range(s1 + 1, n_strip):
       c2 = strip[s2]
-      dx = c1.x - c2.x
       dy = c1.y - c2.y
+      if dy < 0: dy = -dy
+      if dy > d: # y 좌표로 정렬되어 있으므로 y 차이가 이미 d 를 넘었다면 
+        vis.compare(c1.index, c2.index, sqrt((c1.x - c2.x)**2+dy**2))
+        break    # 더이상할 진행할 필요가 없다
+      dx = c1.x - c2.x
+      if dx > d: # x 좌표차이가 이미 d 보다 크면
+        vis.compare(c1.index, c2.index, sqrt(dx**2+dy**2))
+        continue # 다음 점으로 넘어간다
       dist = sqrt(dx**2+dy**2) # c1 과 c2 사이의 거리를 구한다
       vis.compare(c1.index, c2.index, sqrt(dx**2+dy**2))
       if d > dist:             # 기존의 최단거리보다 작으면
