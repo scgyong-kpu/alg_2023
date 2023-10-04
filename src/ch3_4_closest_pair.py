@@ -106,6 +106,10 @@ def closest_pair(arr, left, right):
         d = dist               # 정보를 업데이트한다
         s, e = c1.index, c2.index
 
+  # n_strip 의 시간복잡도
+  # https://blog.naver.com/PostView.naver?blogId=chogahui05&logNo=221284066001
+  # https://itzsyboo.medium.com/algorithms-studynote-4-divide-and-conquer-closest-pair-49ba679ce3c7
+
   vis.set_strip()
 
   vis.set_closest(left, right, s, e, d)
