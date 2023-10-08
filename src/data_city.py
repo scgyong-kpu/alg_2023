@@ -1090,8 +1090,8 @@ if __name__ == '__main__':
   print(f'Samples: {five_letter_cities[:30]}')
 
   cities = five_letter_cities[:100]
-  # from vis import PlanarVisualizer as Visualizer
-  from vis import Dummy as Visualizer
+  from vis import PlanarVisualizer as Visualizer
+  # from vis import Dummy as Visualizer
   vis = Visualizer('Cities Visualizer')
   vis.setup(vis.get_main_module())
   # for i in range(len(cities)):
