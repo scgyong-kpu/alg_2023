@@ -12,8 +12,8 @@ Algorithm Lecture 2023
 8. **[9/28] Ch 6 Sort #4 : Radix-LSD, Radix-MSD, External**
 9. **[10/2] Ch 3 D&C #1 : Merge, Quick**
 10. **[10/5] Ch 3 D&C #2 : Selection, Closest Pair**
-11. [10/9] Ch 3 D&C #3 : 다양한 언어에서의 Sort
-12. [10/12] Ch 3 Sort #5: 실습
+11. **[10/9] Ch 3 D&C #3 : 다양한 언어에서의 Sort**
+12. **[10/12] Ch 3 Sort #5: 실습**
 14. [10/16] Ch 3 D&C #3: 실습
 15. [10/19] 중간고사 대비 정리
 16. 중간고사
