@@ -43,6 +43,7 @@ def next():
   ds_index = (ds_index + 1) % n_data_sets
   ds = data_sets[ds_index]
   cities = five_letter_cities[ds['beg']:ds['end']]
+  City.apply_index(cities)
   edges = ds['edges']
 
 ds_index = -1
