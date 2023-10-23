@@ -1,26 +1,9 @@
-from data_city import City, five_letter_cities
-# from vis import KruskalVisualizer as Visualizer
 from vis import PlanarVisualizer as Visualizer
-import random
+import data_sample_cities as dsc
 
 if __name__ == '__main__':
-  vis = Visualizer('Cities 146~172')
-  beg = 146
-  end = 172
-  cities = five_letter_cities[beg:end]
-  edges = [
-    (0, 3, 243), (0, 11, 265), (0, 14, 243), (0, 24, 226), (1, 6, 272), 
-    (1, 16, 530), (1, 21, 401), (2, 6, 426), (2, 8, 180), (2, 17, 394), 
-    (2, 21, 98), (3, 11, 469), (3, 14, 120), (3, 18, 243), (3, 24, 183), 
-    (4, 10, 325), (4, 16, 217), (4, 25, 232), (5, 19, 121), (6, 8, 321), 
-    (6, 10, 441), (6, 12, 319), (6, 13, 277), (6, 21, 169), (6, 22, 171),
-    (7, 9, 222), (7, 10, 231), (8, 12, 58), (8, 13, 416), (8, 21, 329), 
-    (8, 22, 204), (9, 10, 201), (9, 16, 177), (9, 23, 288), (10, 13, 495), 
-    (0, 16, 305), (11, 14, 475), (11, 20, 247), (11, 24, 73), (13, 15, 506), 
-    (13, 21, 167), (14, 17, 276), (14, 24, 260), (14, 25, 232), (15, 17, 446), 
-    (15, 19, 466), (15, 21, 223), (16, 23, 425), (17, 18, 260), (18, 25, 241), 
-    (19, 20, 196), (20, 24, 482), (21, 22, 240), (22, 23, 232), (23, 25, 220)
-  ]
+  vis = Visualizer('Cities')
+  cities, edges = dsc.cities, dsc.edges
   vis.setup(vis.get_main_module())
   vis.draw()
   vis.end()
