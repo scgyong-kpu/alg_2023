@@ -19,7 +19,7 @@ def main():
     mst.append((u, v))
     vis.append(u, v, w)
     
-    if (len(mst) == 5): break
+    if (len(mst) == 6): break
 
 if __name__ == '__main__':
   vis = Visualizer('MST - Kruskal')
