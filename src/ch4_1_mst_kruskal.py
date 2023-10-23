@@ -16,5 +16,8 @@ if __name__ == '__main__':
     main()
     again = vis.end()
     if not again: break
-    dsc.next()
+    if vis.restart_lshift:
+      dsc.next()
+    elif vis.restart_rshift:
+      dsc.random()
 
