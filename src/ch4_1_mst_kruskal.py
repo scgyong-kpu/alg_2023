@@ -5,8 +5,8 @@ import random
 
 if __name__ == '__main__':
   vis = Visualizer('Cities')
-  beg = 340
-  end = 348
+  beg = 154
+  end = 165
   cities = five_letter_cities[beg:end]
   edges = [
     (0, 1, 668), (0, 2, 312), (0, 4, 128), (1, 2, 652), (1, 3, 1206), 
