@@ -29,14 +29,17 @@ def main():
 
   while len(mst) < n_cities - 1 and copy:
     u,v,w = copy.pop(0)
-    if find_root(u) == find_root(v): continue
+    if find_root(u) == find_root(v): 
+      vis.ignore(u, v, w)
+      continue
     c1, c2 = cities[u], cities[v]
     total_cost += w
     mst.append((u, v))
     union(u, v)
     vis.append(u, v, w)
     
-    if (len(mst) == 6): break
+    # if (len(mst) == 6): break
+  vis.finish()
 
 if __name__ == '__main__':
   vis = Visualizer('MST - Kruskal')
