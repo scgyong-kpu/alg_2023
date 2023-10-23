@@ -1,4 +1,5 @@
-from data_city import City, five_letter_cities
+from data_city import City, five_letter_cities, make_edges
+from random import randint
 
 data_sets = [
   {
@@ -46,4 +47,21 @@ def next():
 
 ds_index = -1
 next()
+
+def random():
+  global cities, edges
+  beg = randint(0, 800)
+  end = randint(beg+15, beg+25)
+  cities = five_letter_cities[beg:end]
+  City.apply_index(cities)
+  edges = make_edges(cities, 3/5, False)
+  print(f"    'beg':{beg}, 'end':{end}, 'edges':[ ", end='')
+  cnt = 0
+  for e in edges:
+    if cnt % 5 == 0: print('\n      ', end='')
+    print(f'{e}, ', end='')
+    cnt += 1
+  print()
+  print(f'    ] # {cities[0]} ~ {cities[-1]} : {len(edges)} edges.')
+  print('  }, {')
 
