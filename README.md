@@ -14,10 +14,10 @@ Algorithm Lecture 2023
 10. **[10/6] Ch 3 D&C #2 : Selection, Closest Pair**
 11. **[10/9] Ch 3 D&C #3 : 다양한 언어에서의 Sort**
 12. **[10/10] Ch 3 Sort #5: 실습**
-13. [10/16] Ch 3 D&C #3: 실습
-14. [10/17] 중간고사 대비 정리
-15. 중간고사
-16. Ch 4 Greedy #1 : Coin, MST
+13. **[10/16] Ch 3 D&C #3: 실습**
+14. **[10/17] 중간고사 대비 정리**
+15. **중간고사**
+16. **Ch 4 Greedy #1 : Coin, MST**
 17. Ch 4 Greedy #2 : Kruskal, Prim
 18. Ch 4 Greedy #3 : 실습
 19. Ch 4 Greedy #4 : Dijkstra, Knapsack, ...
