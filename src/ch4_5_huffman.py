@@ -91,3 +91,24 @@ print(ba)
 import binascii
 print(binascii.hexlify(ba))
 
+def decode(ba):
+  decoded = ''
+  root = nodes[0]
+  node = root
+  for byte in ba:
+    mask = 0x80
+    while mask:
+      left = (byte & mask) == 0
+      if left:
+        node = node.left
+      else:
+        node = node.right
+      if node.left is None and node.right is None:
+        print(node.ch, end='')
+        decoded += node.ch
+        node = root
+      mask >>= 1
+
+  return decoded
+
+decoded = decode(ba)
