@@ -22,8 +22,15 @@ def print_adj_matrix():
 def main():
   global n_cities
   n_cities = len(cities)
+
   build_graph()
 
+  start_city_index = 0
+  print(f'{n_cities} cities, starts from {cities[start_city_index]}')
+
+  global weights
+  weights = []
+  weights.append((0, start_city_index))
 
 if __name__ == '__main__':
   vis = Visualizer('Minimum Spanning Tree - Prim')
