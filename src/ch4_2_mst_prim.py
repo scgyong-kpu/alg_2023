@@ -28,7 +28,7 @@ def main():
   start_city_index = 0
   print(f'{n_cities} cities, starts from {cities[start_city_index]}')
 
-  global weights, origins
+  global weights, origins, completed
   weights = dict()
   weights[start_city_index] = 0
   print(weights)
@@ -36,21 +36,42 @@ def main():
   origins = dict()
   origins[start_city_index] = start_city_index
 
+  completed = set()
+
   global mst
   mst = []
   while weights:
     print('<', weights)
     w, ci = pop_smallest_weight()
-    mst.append((origins[ci], ci, w))    
     print('>', weights)
+    completed.add(ci)
+    fr = origins[ci]
+    if ci != fr:
+      mst.append((fr, ci, w))
+      vis.fix(ci, fr)
+      print(f'{mst=}')
 
     adjacents = graph[ci]
     for adj in adjacents:
+      if adj in completed: continue
       weight = adjacents[adj]
-      weights[adj] = weight
-      vis.append(weight, adj, ci)
+      if adj in weights:         # 해당 점의 정보가 존재하면
+        prev_weight = weights[adj]
+        print(f'{prev_weight=} {adj=} {weight=}')
+        if weight < prev_weight: # 기존 가중치보다 적으면 업데이트
+          weights[adj] = weight
+          origins[adj] = ci
+          vis.update(weight, adj, ci)
+        else:
+          vis.compare(adj, ci)
+      else:                      # 존재하지 않는 정보이니 새로 추가
+        weights[adj] = weight
+        origins[adj] = ci
+        vis.append(weight, adj, ci)
 
-    if len(mst) <= 1: break
+      print(' - ', weights)
+
+    if len(mst) >= n_cities - 1: break
 
 def pop_smallest_weight():
   min_wi = -1
@@ -62,7 +83,7 @@ def pop_smallest_weight():
       min_w = w
       min_wi = wi
   if min_wi >= 0: del weights[min_wi]
-  return min_wi, min_w
+  return min_w, min_wi
 
 if __name__ == '__main__':
   vis = Visualizer('Minimum Spanning Tree - Prim')
