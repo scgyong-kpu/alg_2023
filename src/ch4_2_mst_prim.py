@@ -6,6 +6,9 @@ def build_graph():
   n_cities = len(cities)
   global graph
   graph = [[0 for _ in range(n_cities) ] for _ in range(n_cities)]
+  for u,v,w in edges:
+    graph[u][v] = w
+    graph[v][u] = w
   print(graph)
 
 def main():
