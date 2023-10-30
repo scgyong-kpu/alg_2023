@@ -33,7 +33,7 @@ def main():
 
   global weights, completed
   weights = heapdict.heapdict()
-  weights[start_city_index] = 0, 0 # weight, from
+  weights[start_city_index] = 0, start_city_index # weight, from
   #저장 순서는 (weight, index, from) 이다
 
   completed = set()
@@ -41,14 +41,11 @@ def main():
   global mst
   mst = []
   while weights:
-    print('<', list(weights.items()))
     ci, (w, fr) = weights.popitem() # key=cityToIndex, value=(weight,cityFromIndex)
     completed.add(ci)
-    print('>', list(weights.items()))
     if (fr != ci):
       mst.append((fr, ci, w))
       vis.fix(ci, fr)
-      print(f'{mst=}')
 
     adjacents = graph[ci]
     for adj in adjacents:
@@ -64,8 +61,6 @@ def main():
       else:                        # 저장되어 있지 않다면
         weights[adj] = weight, ci   # 추가한다
         vis.append(weight, adj, ci)
-
-      print(' - ', list(weights.items()))
 
     if len(mst) >= n_cities - 1: break
 
