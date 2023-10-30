@@ -51,32 +51,32 @@ def main():
     for adj in adjacents:
       if adj in completed: continue
       weight = adjacents[adj]
-      prev_weight = find_weight(adj)
-      print(f'find_weight({adj}, {prev_weight})')
-      if prev_weight == None:    # 기존에 저장된 적이 없다. 추가하자
-        weights.append((weight, adj, ci))
+      for wi in range(0, len(weights)): # 가중치들을 저장해놓은 곳에서
+        w, c1, c2 = weights[wi]
+        if c1 == adj:    # 연결되는 점에 대한 기록이 있다면
+          if weight < w: # 그리고 이번에 연결되는 점의 가중치가 더 작다면
+            weights[wi] = (weight, adj, ci) # 가중치 정보를 교체한다
+            vis.update(weight, adj, ci)
+          else:
+            vis.compare(adj, ci)
+          break
+      else: # for 에서 break 로 종료하지 않았다면
+        weights.append((weight, adj, ci)) # 기록이 없었으므로 추가한다
         vis.append(weight, adj, ci)
-      elif prev_weight > weight: # 저장된 비용보다 적다. 갱신하다
-        update_weight(adj, weight, ci)
-        vis.update(weight, adj, ci)
-      else:                      # 기존의 비용이 적다. 내버려두자
-        vis.compare(adj, ci)
+
       print(' - ', weights)
 
     if len(mst) >= n_cities - 1: break
 
-def find_weight(ci):
-  for e in weights:
-    if e[1] == ci:
-      return e[0]
-  return None
-
-def update_weight(ci_to, weight, ci_from):
-  for wi in range(0, len(weights)):
-    if ci_to == weights[wi][1]:
-      weights[wi] = (weight, ci_to, ci_from)
-      return
-  return
+''' for-else in python
+for i in range(10):
+  print(f'{i=}')
+  if i > 5: # 5 or 50
+    print('breaking')
+    break
+else:
+  print('no break')
+'''
 
 def pop_smallest_weight():
   min_wi = 0
