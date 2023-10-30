@@ -15,7 +15,7 @@ for mat in mats:
     weight_sum += mat['weight']
     price_sum += mat['price']
     items.append(mat)
-    print(f'{weight_sum=} {items=}')
+    print(f'{weight_sum=} {price_sum=} {items=}')
   else:
     avail_weight = cap - weight_sum
     if avail_weight > 0:
@@ -26,5 +26,5 @@ for mat in mats:
       part['weight'] = avail_weight
       part['price'] = price
       items.append(part)
-      print(f'{weight_sum=} {items=}')
+      print(f'{weight_sum=} {price_sum=} {items=}')
     break
