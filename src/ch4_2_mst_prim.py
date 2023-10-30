@@ -38,9 +38,16 @@ def main():
   while weights:
     print('<', weights)
     w, ci = pop_smallest_weight()
+    # mst.append((???, ci, w))
     print('>', weights)
 
-    if len(mst) == 1: break
+    adjacents = graph[ci]
+    for adj in adjacents:
+      weight = adjacents[adj]
+      weights.append((weight, adj))
+      vis.append(weight, adj, ci)
+
+    if len(mst) <= 1: break
 
 def pop_smallest_weight():
   min_wi = 0
