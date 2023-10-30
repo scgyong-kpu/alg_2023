@@ -1,5 +1,6 @@
 from vis import PrimVisualizer as Visualizer
 import data_sample_cities as dsc
+import heapq
 
 # adjacency matrix - array of array
 def build_graph():
@@ -39,7 +40,7 @@ def main():
   mst = []
   while weights:
     print('<', weights)
-    w, ci, fr = pop_smallest_weight()
+    w, ci, fr = heapq.heappop(weights)
     completed.add(ci)
     print('>', weights)
     if (fr != ci):
@@ -55,38 +56,19 @@ def main():
         w, c1, c2 = weights[wi]
         if c1 == adj:    # 연결되는 점에 대한 기록이 있다면
           if weight < w: # 그리고 이번에 연결되는 점의 가중치가 더 작다면
-            weights[wi] = (weight, adj, ci) # 가중치 정보를 교체한다
+            weights.pop(wi)
+            heapq.heappush(weights, (weight, adj, ci)) # 가중치 정보를 교체한다
             vis.update(weight, adj, ci)
           else:
             vis.compare(adj, ci)
           break
       else: # for 에서 break 로 종료하지 않았다면
-        weights.append((weight, adj, ci)) # 기록이 없었으므로 추가한다
+        heapq.heappush(weights, (weight, adj, ci)) # 기록이 없었으므로 추가한다
         vis.append(weight, adj, ci)
 
       print(' - ', weights)
 
     if len(mst) >= n_cities - 1: break
-
-''' for-else in python
-for i in range(10):
-  print(f'{i=}')
-  if i > 5: # 5 or 50
-    print('breaking')
-    break
-else:
-  print('no break')
-'''
-
-def pop_smallest_weight():
-  min_wi = 0
-  min_w = weights[min_wi][0]
-  for wi in range(1, len(weights)):
-    w = weights[wi][0]
-    if w < min_w:
-      min_w = w
-      min_wi = wi
-  return weights.pop(min_wi)
 
 if __name__ == '__main__':
   vis = Visualizer('Minimum Spanning Tree - Prim')
