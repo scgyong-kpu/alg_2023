@@ -1,4 +1,5 @@
 from vis import PrimVisualizer as Visualizer
+from random import randrange
 import data_sample_cities as dsc
 import heapdict
 # heapdict 를 사용하기 위해서는 설치가 필요하다
@@ -28,7 +29,7 @@ def main():
 
   build_graph()
 
-  start_city_index = 0
+  start_city_index = randrange(n_cities)
   print(f'{n_cities} cities, starts from {cities[start_city_index]}')
 
   global weights, completed
@@ -57,7 +58,7 @@ def main():
           weights[adj] = weight, ci    # 교체한다
           vis.update(weight, adj, ci)
         else:
-          vis.compare(adj, ci)
+          vis.compare(adj, ci, weight)
       else:                        # 저장되어 있지 않다면
         weights[adj] = weight, ci   # 추가한다
         vis.append(weight, adj, ci)
