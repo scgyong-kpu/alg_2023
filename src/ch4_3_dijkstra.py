@@ -1,4 +1,4 @@
-from vis import PrimVisualizer as Visualizer
+from vis import DijkstraVisualizer as Visualizer
 from random import randrange
 import data_sample_cities as dsc
 import heapdict
@@ -32,6 +32,8 @@ def main():
   start_city_index = randrange(n_cities)
   print(f'{n_cities} cities, starts from {cities[start_city_index]}')
 
+  vis.set_start(start_city_index)
+  
   global weights, completed
   weights = heapdict.heapdict()
   weights[start_city_index] = 0, start_city_index # weight, from
