@@ -1,4 +1,5 @@
 from collections import defaultdict
+from heapq import heappush, heappop
 
 with open('data_knapsack.json') as f:
   contents = f.read()
@@ -33,10 +34,7 @@ class Node:
 nodes = []
 for ch in counts:
   node = Node(counts[ch], ch)
-  nodes.append(node)
+  heappush(nodes, node)
 
-print('----- Before sort -----')
 print(nodes)
-nodes.sort()
-print('----- After  sort -----')
-print(nodes)
+
