@@ -17,4 +17,14 @@ for mat in mats:
     items.append(mat)
     print(f'{weight_sum=} {items=}')
   else:
+    avail_weight = cap - weight_sum
+    if avail_weight > 0:
+      price = avail_weight * mat['price'] / mat['weight']
+      weight_sum += avail_weight
+      price_sum += price
+      part = mat.copy()
+      part['weight'] = avail_weight
+      part['price'] = price
+      items.append(part)
+      print(f'{weight_sum=} {items=}')
     break
