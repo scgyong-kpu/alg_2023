@@ -28,28 +28,34 @@ def main():
   start_city_index = 0
   print(f'{n_cities} cities, starts from {cities[start_city_index]}')
 
-  global weights
+  global weights, completed
   weights = []
   weights.append((0, start_city_index, 0))
-  #저장 순서는 (weight, index) 이다
+  #저장 순서는 (weight, index, from) 이다
+
+  completed = set()
 
   global mst
   mst = []
   while weights:
     print('<', weights)
     w, ci, fr = pop_smallest_weight()
-    mst.append((fr, ci, w))
+    completed.add(ci)
     print('>', weights)
-    print(f'{mst=}')
+    if (fr != ci):
+      mst.append((fr, ci, w))
+      vis.fix(ci, fr)
+      print(f'{mst=}')
 
     adjacents = graph[ci]
     for adj in adjacents:
+      if adj in completed: continue
       weight = adjacents[adj]
       weights.append((weight, adj, ci))
       print(' - ', weights)
       vis.append(weight, adj, ci)
 
-    if len(mst) >= 5: break
+    if len(mst) >= n_cities - 1: break
 
 def pop_smallest_weight():
   min_wi = 0
