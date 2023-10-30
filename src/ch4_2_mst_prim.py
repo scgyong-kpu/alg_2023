@@ -31,6 +31,26 @@ def main():
   global weights
   weights = []
   weights.append((0, start_city_index))
+  #저장 순서는 (weight, index) 이다
+
+  global mst
+  mst = []
+  while weights:
+    print('<', weights)
+    w, ci = pop_smallest_weight()
+    print('>', weights)
+
+    if len(mst) == 1: break
+
+def pop_smallest_weight():
+  min_wi = 0
+  min_w = weights[min_wi][0]
+  for wi in range(1, len(weights)):
+    w = weights[wi][0]
+    if w < min_w:
+      min_w = w
+      min_wi = wi
+  return weights.pop(min_wi)
 
 if __name__ == '__main__':
   vis = Visualizer('Minimum Spanning Tree - Prim')
