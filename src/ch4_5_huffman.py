@@ -14,14 +14,15 @@ print(counts)
 class Node:
   def __init__(self, freq, ch, left=None, right=None, code=''):
     self.freq = freq
-    if ch == '\n': ch = '\\n'
-    elif ch == '\\': ch = '\\\\'
     self.ch = ch
     self.left = left
     self.right = right
     self.code = code
   def __repr__(self):
-    s = f'<{self.freq}/{self.ch}'
+    ch = self.ch
+    if ch == '\n': ch = '\\n'
+    elif ch == '\\': ch = '\\\\'
+    s = f'<{self.freq}/{ch}'
     if self.left is not None:
       s += f' L={self.left}'
     if self.right is not None:
@@ -55,6 +56,8 @@ def printTree(node, indent=0):
 
 printTree(nodes[0])
 
+codes = dict()
+
 def assignCode(node):
   if node.left is not None:
     node.left.code = node.code + '0'
@@ -64,5 +67,14 @@ def assignCode(node):
     assignCode(node.right)
   if node.left is None and node.right is None: # Leaf
     print(f'{node.ch}({node.freq}):{node.code}', end=' ')
+    codes[node.ch] = node.code
 
 assignCode(nodes[0])
+print()
+
+def encode():
+  for ch in contents:
+    code = codes[ch]
+    print(f'{ch=} {code=}')
+
+encode()
