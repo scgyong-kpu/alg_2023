@@ -1,6 +1,8 @@
 from vis import PrimVisualizer as Visualizer
 import data_sample_cities as dsc
-import heapq
+import heapdict
+# heapdict 를 사용하기 위해서는 설치가 필요하다
+# pip install heapdict
 
 # adjacency matrix - array of array
 def build_graph():
@@ -30,8 +32,8 @@ def main():
   print(f'{n_cities} cities, starts from {cities[start_city_index]}')
 
   global weights, completed
-  weights = []
-  weights.append((0, start_city_index, 0))
+  weights = heapdict.heapdict()
+  weights[start_city_index] = 0, 0 # weight, from
   #저장 순서는 (weight, index, from) 이다
 
   completed = set()
@@ -39,10 +41,10 @@ def main():
   global mst
   mst = []
   while weights:
-    print('<', weights)
-    w, ci, fr = heapq.heappop(weights)
+    print('<', list(weights.items()))
+    ci, (w, fr) = weights.popitem() # key=cityToIndex, value=(weight,cityFromIndex)
     completed.add(ci)
-    print('>', weights)
+    print('>', list(weights.items()))
     if (fr != ci):
       mst.append((fr, ci, w))
       vis.fix(ci, fr)
@@ -52,21 +54,18 @@ def main():
     for adj in adjacents:
       if adj in completed: continue
       weight = adjacents[adj]
-      for wi in range(0, len(weights)): # 가중치들을 저장해놓은 곳에서
-        w, c1, c2 = weights[wi]
-        if c1 == adj:    # 연결되는 점에 대한 기록이 있다면
-          if weight < w: # 그리고 이번에 연결되는 점의 가중치가 더 작다면
-            weights.pop(wi)
-            heapq.heappush(weights, (weight, adj, ci)) # 가중치 정보를 교체한다
-            vis.update(weight, adj, ci)
-          else:
-            vis.compare(adj, ci)
-          break
-      else: # for 에서 break 로 종료하지 않았다면
-        heapq.heappush(weights, (weight, adj, ci)) # 기록이 없었으므로 추가한다
+      if adj in weights:    # adj 에 대해 가중치가 저장되어 있다면
+        w = weights[adj][0] # 가중치를 가져온다
+        if weight < w:      # 가져온 것보다 비용이 적다면
+          weights[adj] = weight, ci    # 교체한다
+          vis.update(weight, adj, ci)
+        else:
+          vis.compare(adj, ci)
+      else:                        # 저장되어 있지 않다면
+        weights[adj] = weight, ci   # 추가한다
         vis.append(weight, adj, ci)
 
-      print(' - ', weights)
+      print(' - ', list(weights.items()))
 
     if len(mst) >= n_cities - 1: break
 
