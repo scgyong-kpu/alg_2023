@@ -28,17 +28,27 @@ def main():
   start_city_index = 0
   print(f'{n_cities} cities, starts from {cities[start_city_index]}')
 
-  global weights
+  global weights, origins
   weights = dict()
   weights[start_city_index] = 0
   print(weights)
+
+  origins = dict()
+  origins[start_city_index] = start_city_index
 
   global mst
   mst = []
   while weights:
     print('<', weights)
     w, ci = pop_smallest_weight()
+    mst.append((origins[ci], ci, w))    
     print('>', weights)
+
+    adjacents = graph[ci]
+    for adj in adjacents:
+      weight = adjacents[adj]
+      weights[adj] = weight
+      vis.append(weight, adj, ci)
 
     if len(mst) <= 1: break
 
