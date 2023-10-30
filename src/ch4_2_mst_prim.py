@@ -30,21 +30,21 @@ def main():
 
   global weights
   weights = []
-  weights.append((0, start_city_index))
+  weights.append((0, start_city_index, 0))
   #저장 순서는 (weight, index) 이다
 
   global mst
   mst = []
   while weights:
     print('<', weights)
-    w, ci = pop_smallest_weight()
-    # mst.append((???, ci, w))
+    w, ci, fr = pop_smallest_weight()
+    mst.append((fr, ci, w))
     print('>', weights)
 
     adjacents = graph[ci]
     for adj in adjacents:
       weight = adjacents[adj]
-      weights.append((weight, adj))
+      weights.append((weight, adj, ci))
       vis.append(weight, adj, ci)
 
     if len(mst) <= 1: break
