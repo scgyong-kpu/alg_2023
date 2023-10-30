@@ -87,3 +87,7 @@ def encode():
   return ba
 ba = encode()
 print(ba)
+
+import binascii
+print(binascii.hexlify(ba))
+
