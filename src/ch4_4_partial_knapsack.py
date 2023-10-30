@@ -11,7 +11,7 @@ weight_sum = 0
 price_sum = 0
 
 for mat in mats:
-  if weight_sum < cap:
+  if cap >= weight_sum + mat['weight']:
     weight_sum += mat['weight']
     price_sum += mat['price']
     items.append(mat)
