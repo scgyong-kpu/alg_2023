@@ -4,11 +4,12 @@ import data_sample_cities as dsc
 # adjacency matrix - array of array
 def build_graph():
   global graph
-  graph = [[0 for _ in range(n_cities) ] for _ in range(n_cities)]
+  graph = {u: dict() for u in range(n_cities)}
   for u,v,w in edges:
     graph[u][v] = w
     graph[v][u] = w
-  print_adj_matrix()
+  # print_adj_matrix()
+  print(graph)
 
 def print_adj_matrix():
   for u in range(n_cities):
