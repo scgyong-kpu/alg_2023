@@ -14,20 +14,20 @@ Algorithm Lecture 2023
 10. **[10/5] Ch 3 D&C #2 : Selection, Closest Pair**
 11. **[10/10] Ch 3 D&C #3 : 다양한 언어에서의 Sort**
 12. **[10/12] Ch 3 Sort #5: 실습**
-13. [10/17] Ch 3 D&C #3: 실습
-14. [10/19] 중간고사 대비 정리
-15. 중간고사
-16. Ch 4 Greedy #1 : Coin, MST
-17. Ch 4 Greedy #2 : Kruskal, Prim
-18. Ch 4 Greedy #3 : 실습
-19. Ch 4 Greedy #4 : Dijkstra, Knapsack, ...
-20. Ch 4 Greedy #5 : Set-Cover, Floyd-Warshall
-21. Ch 5 DyPrg #1 : Matrix, 0-1 Knapsack, Coin Change
-22. Ch 5 DyPrg #2 : 실습
-23. Ch 7 NP-Complete
-24. Ch 8 Approx. Algo. #1 : PPT
-25. Ch 8 Approx. Algo. #2 : 실습: MST-TSP
-26. Ch 8 Approx. Algo. #3 : 실습: VertexCover, BinPacking
-27. Ch 8 Approx. Algo. #4 : 실습: Clustering
-28. 기말고사 대비 정리
-29. 기말고사
+13. **[10/17] Ch 3 D&C #3: 실습**
+14. **[10/19] 중간고사 대비 정리**
+15. **[10/24] 중간고사**
+16. **[10/26] Ch 4 Greedy #1 : Coin, MST**
+17. [10/31] Ch 4 Greedy #2 : Kruskal, Prim
+18. [11/2] Ch 4 Greedy #3 : Prim, Dijkstra, Knapsack, ... 
+19. [11/7] Ch 4 Greedy #4 : Set-Cover, Floyd-Warshall (Online)
+20. [11/9] Ch 4 Greedy #5 : 실습
+21. [11/14] Ch 5 DyPrg #1 : Matrix, 0-1 Knapsack, Coin Change
+22. [11/16] Ch 5 DyPrg #2 : 실습
+23. [11/21] Ch 7 NP-Complete
+24. [11/23] Ch 8 Approx. Algo. #1 : PPT
+25. [11/28] Ch 8 Approx. Algo. #2 : 실습: MST-TSP
+26. [11/30] Ch 8 Approx. Algo. #3 : 실습: VertexCover, BinPacking
+27. [12/5] Ch 8 Approx. Algo. #4 : 실습: Clustering
+28. [12/7] 기말고사 대비 정리
+29. [12/12] 기말고사
