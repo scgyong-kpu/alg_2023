@@ -33,6 +33,27 @@ def main():
   weights[start_city_index] = 0
   print(weights)
 
+  global mst
+  mst = []
+  while weights:
+    print('<', weights)
+    w, ci = pop_smallest_weight()
+    print('>', weights)
+
+    if len(mst) <= 1: break
+
+def pop_smallest_weight():
+  min_wi = -1
+  min_w = float('inf')
+  for wi in range(n_cities):
+    if wi not in weights: continue
+    w = weights[wi]
+    if w < min_w:
+      min_w = w
+      min_wi = wi
+  if min_wi >= 0: del weights[min_wi]
+  return min_wi, min_w
+
 if __name__ == '__main__':
   vis = Visualizer('Minimum Spanning Tree - Prim')
   idx = 0
