@@ -11,4 +11,7 @@ weight_sum = 0
 price_sum = 0
 
 for mat in mats:
-  print(f'{mat=}')
+    weight_sum += mat['weight']
+    price_sum += mat['price']
+    items.append(mat)
+    print(f'{weight_sum=} {items=}')
