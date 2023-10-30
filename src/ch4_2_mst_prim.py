@@ -1,9 +1,16 @@
 from vis import PrimVisualizer as Visualizer
 import data_sample_cities as dsc
 
+# adjacency matrix - array of array
+def build_graph():
+  n_cities = len(cities)
+  global graph
+  graph = [[0 for _ in range(n_cities) ] for _ in range(n_cities)]
+  print(graph)
+
 def main():
   n_cities = len(cities)
-
+  build_graph()
 
 
 if __name__ == '__main__':
