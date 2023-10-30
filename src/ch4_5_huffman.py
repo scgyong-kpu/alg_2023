@@ -23,9 +23,9 @@ class Node:
   def __repr__(self):
     s = f'<{self.freq}/{self.ch}'
     if self.left is not None:
-      s += ' L={self.left}'
+      s += f' L={self.left}'
     if self.right is not None:
-      s += ' R={self.right}'
+      s += f' R={self.right}'
     s += '>'
     return s
   def __lt__(self, other): # 객체를 빈도수로 비교하기위해
@@ -38,7 +38,11 @@ for ch in counts:
 
 print(nodes)
 
-while nodes:
-  node = heappop(nodes)
-  print(node, end=', ')
-print()
+while len(nodes) > 1:
+  n1 = heappop(nodes)
+  n2 = heappop(nodes)
+  node = Node(n1.freq+n2.freq, n1.ch+n2.ch, n1, n2)
+  heappush(nodes, node)
+
+print(nodes)
+
