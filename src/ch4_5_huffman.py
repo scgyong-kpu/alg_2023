@@ -54,7 +54,7 @@ def printTree(node, indent=0):
   if node.right is not None:
     printTree(node.right, indent+2)
 
-printTree(nodes[0])
+# printTree(nodes[0])
 
 codes = dict()
 
@@ -73,8 +73,17 @@ assignCode(nodes[0])
 print()
 
 def encode():
+  ba = bytearray()
+  bits = ''
   for ch in contents:
     code = codes[ch]
-    print(f'{ch=} {code=}')
-
-encode()
+    bits += code
+    while len(bits) >= 8:
+      byte, bits = bits[:8], bits[8:]
+      ba.append(int(byte, base=2))
+  if len(bits) > 0:
+    byte = bits + '0' * (8 - len(bits))
+    ba.append(int(byte, base=2))
+  return ba
+ba = encode()
+print(ba)
