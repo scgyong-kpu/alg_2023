@@ -12,7 +12,7 @@ for ch in contents:
 print(counts)
 
 class Node:
-  def __init__(self, freq, ch, left=None, right=None, code=None):
+  def __init__(self, freq, ch, left=None, right=None, code=''):
     self.freq = freq
     if ch == '\n': ch = '\\n'
     elif ch == '\\': ch = '\\\\'
@@ -54,3 +54,15 @@ def printTree(node, indent=0):
     printTree(node.right, indent+2)
 
 printTree(nodes[0])
+
+def assignCode(node):
+  if node.left is not None:
+    node.left.code = node.code + '0'
+    assignCode(node.left)
+  if node.right is not None:
+    node.right.code = node.code + '1'
+    assignCode(node.right)
+  if node.left is None and node.right is None: # Leaf
+    print(f'{node.ch}({node.freq}):{node.code}', end=' ')
+
+assignCode(nodes[0])
