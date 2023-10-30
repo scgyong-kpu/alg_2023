@@ -51,11 +51,32 @@ def main():
     for adj in adjacents:
       if adj in completed: continue
       weight = adjacents[adj]
-      weights.append((weight, adj, ci))
+      prev_weight = find_weight(adj)
+      print(f'find_weight({adj}, {prev_weight})')
+      if prev_weight == None:    # 기존에 저장된 적이 없다. 추가하자
+        weights.append((weight, adj, ci))
+        vis.append(weight, adj, ci)
+      elif prev_weight > weight: # 저장된 비용보다 적다. 갱신하다
+        update_weight(adj, weight, ci)
+        vis.update(weight, adj, ci)
+      else:                      # 기존의 비용이 적다. 내버려두자
+        vis.compare(adj, ci)
       print(' - ', weights)
-      vis.append(weight, adj, ci)
 
     if len(mst) >= n_cities - 1: break
+
+def find_weight(ci):
+  for e in weights:
+    if e[1] == ci:
+      return e[0]
+  return None
+
+def update_weight(ci_to, weight, ci_from):
+  for wi in range(0, len(weights)):
+    if ci_to == weights[wi][1]:
+      weights[wi] = (weight, ci_to, ci_from)
+      return
+  return
 
 def pop_smallest_weight():
   min_wi = 0
