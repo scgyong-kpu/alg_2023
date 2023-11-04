@@ -22,6 +22,8 @@ vis = Visualizer('Set Cover - Simple Set')
 vis.setup(vis.get_main_module())
 vis.reset()
 
+C = [] # 결과를 저장할 배열
+
 # 나중에 Loop 로 변경하기 위해 강제 들여쓰기 목적으로 if True 를 쓴다
 if True:    
     max_i, max_c = -1, 0
@@ -34,13 +36,19 @@ if True:
         vis.comp(i, v, cnt)
       if max_c < cnt:              # 겹치는 갯수 중 max 를 max_c,
         max_i, max_c = i, cnt      # 그 위치를 max_i 에 저장한다 
-    print(f'{max_i=}')
+    # print(f'{max_i=}')
     vis.fix(max_i)                 # max_i 번째에 가장 원소가 많이 겹친다
+
+    U -= F[max_i]    # U 에서 가장 많이 겹치는 그룹의 원소를 제거한다
+    S = F.pop(max_i) # F 에서 해당 subset 집합을 제거하고
+    C.append(S)      # 결과 배열인 C 에 넣는다
+    print(f'{C=}')
 
 print(u)              # u 의 원소를 모두 출력
 print(f[1], f[5])     # f[1] 과 f[5] 를 각각 출력
 print(f[1] | f[5])    # f[1] 과 f[5] 의 합집합을 출력해 보면 u 와 같다
 # 따라서 위 두 집합을 선택하면 최소 선택으로 u 를 모두 cover 할 수 있다
 
+vis.draw()
 vis.end()
 
