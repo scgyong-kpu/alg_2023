@@ -22,17 +22,14 @@ def main():
 
   global U
   while U:
-    max_i, max_c = -1, 0
-    for i in range(len(F)):        # subset 들을 대상으로 Loop 를 돈다
-      cnt = len(U & F[i])          # 겹치는 갯수는 교집합의 원소수와 같다
-      vis.comp(i, None, cnt)
-      if max_c < cnt:              # 겹치는 갯수 중 max 를 max_c,
-        max_i, max_c = i, cnt      # 그 위치를 max_i 에 저장한다 
-    # print(f'{max_i=}')
+    vis.count_elements()
+    max_i = F.index(max(F, key=lambda s: len(s & U)))
     vis.fix(max_i)                 # max_i 번째에 가장 원소가 많이 겹친다
 
     U -= F[max_i]    # U 에서 가장 많이 겹치는 그룹의 원소를 제거한다
     S = F.pop(max_i) # F 에서 해당 subset 집합을 제거하고
+    # S = F[max_i]
+    # F[max_i] = set()
     C.append(S)      # 결과 배열인 C 에 넣는다
     print(f'{C=}')
 
