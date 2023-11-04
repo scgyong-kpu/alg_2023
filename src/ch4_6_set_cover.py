@@ -15,17 +15,12 @@ f=[
   {6,9},
   {6,10},
 ]
-U = deepcopy(u) # 원본에서 제거하면서 진행할 것이므로
-F = deepcopy(f) # 복사를 해 둔다
 
-vis = Visualizer('Set Cover - Simple Set')
-vis.setup(vis.get_main_module())
-vis.reset()
+def main():
+  C = [] # 결과를 저장할 배열
 
-C = [] # 결과를 저장할 배열
-
-# 나중에 Loop 로 변경하기 위해 강제 들여쓰기 목적으로 if True 를 쓴다
-while U:
+  global U
+  while U:
     max_i, max_c = -1, 0
     for i in range(len(F)):        # subset 들을 대상으로 Loop 를 돈다
       cnt = 0
@@ -49,6 +44,13 @@ print(f[1], f[5])     # f[1] 과 f[5] 를 각각 출력
 print(f[1] | f[5])    # f[1] 과 f[5] 의 합집합을 출력해 보면 u 와 같다
 # 따라서 위 두 집합을 선택하면 최소 선택으로 u 를 모두 cover 할 수 있다
 
-vis.draw()
-vis.end()
-
+vis = Visualizer('Set Cover - Simple Set')
+while True:
+  U = deepcopy(u) # 원본에서 제거하면서 진행할 것이므로
+  F = deepcopy(f) # 복사를 해 둔다
+  vis.setup(vis.get_main_module())
+  vis.reset()
+  main()
+  vis.draw()
+  again = vis.end()
+  if not again: break
