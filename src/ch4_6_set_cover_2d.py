@@ -23,8 +23,6 @@ def main():
   U = deepcopy(u)
   F = deepcopy(f)
   vis.draw()
-
-  return
   vis.wait(1000)
 
   global C
