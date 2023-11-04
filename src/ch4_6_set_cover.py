@@ -25,7 +25,7 @@ vis.reset()
 C = [] # 결과를 저장할 배열
 
 # 나중에 Loop 로 변경하기 위해 강제 들여쓰기 목적으로 if True 를 쓴다
-if True:    
+while U:
     max_i, max_c = -1, 0
     for i in range(len(F)):        # subset 들을 대상으로 Loop 를 돈다
       cnt = 0
