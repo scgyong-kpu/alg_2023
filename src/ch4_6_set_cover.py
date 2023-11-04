@@ -24,12 +24,8 @@ def main():
   while U:
     max_i, max_c = -1, 0
     for i in range(len(F)):        # subset 들을 대상으로 Loop 를 돈다
-      cnt = 0
-      vis.comp(i)
-      subset = sorted(list(F[i]))  # 정렬할 필요는 없지만 vis 를 위해 정렬한다
-      for v in subset:             # 그냥 for v in F[i] 로 해도 좋다
-        if v in U: cnt += 1        # U 에 원소가 있으면 cnt 를 증가한다
-        vis.comp(i, v, cnt)
+      cnt = len(U & F[i])          # 겹치는 갯수는 교집합의 원소수와 같다
+      vis.comp(i, None, cnt)
       if max_c < cnt:              # 겹치는 갯수 중 max 를 max_c,
         max_i, max_c = i, cnt      # 그 위치를 max_i 에 저장한다 
     # print(f'{max_i=}')
