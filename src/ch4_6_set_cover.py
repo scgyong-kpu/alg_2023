@@ -1,3 +1,5 @@
+from copy import deepcopy
+
 # Set Cover 시작
 u={1,2,3,4,5,6,7,8,9,10}
 f=[
@@ -12,6 +14,8 @@ f=[
   {6,9},
   {6,10},
 ]
+U = deepcopy(u) # 원본에서 제거하면서 진행할 것이므로
+F = deepcopy(f) # 복사를 해 둔다
 
 print(u)              # u 의 원소를 모두 출력
 print(f[1], f[5])     # f[1] 과 f[5] 를 각각 출력
