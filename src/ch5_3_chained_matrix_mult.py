@@ -16,7 +16,7 @@ class ChainedMatrixMult:
   def main(self):
     vis.start()
     count = self.matrix_count                # 행열은 모두 count 개 이다
-    for sub_mult_count in range(2, 2 + 1):   # 일단 부분분제의 크기가 2개 일 때만 해 본다
+    for sub_mult_count in range(2, 3 + 1):   # 부분분제의 크기가 3개 일때까지 해 본다
       vis.sub(sub_mult_count)
       max_start = count - sub_mult_count + 1 # 부분문제 크기가 커지면 시작위치가 제한된다
       for start in range(1, max_start + 1):  # 부분문제의 시작위치를 변경시키며 계산한다
