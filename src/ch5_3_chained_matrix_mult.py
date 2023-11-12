@@ -36,6 +36,7 @@ class ChainedMatrixMult:
 if __name__ == '__main__':
   # seed('Hello')
   vis = Visualizer('Chained Matrix Multiplication')
+  vis.select_next_body_visualizer()
   cmm = ChainedMatrixMult([2,8,2,9,8,2])
   while True:
     vis.setup(cmm)
