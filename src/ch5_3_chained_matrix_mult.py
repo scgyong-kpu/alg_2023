@@ -20,6 +20,10 @@ if __name__ == '__main__':
   # seed('Hello')
   vis = Visualizer('Chained Matrix Multiplication')
   cmm = ChainedMatrixMult([2,8,2,9,8,2])
-  vis.setup(cmm)
-  cmm.main()
-  vis.end()
+  while True:
+    vis.setup(cmm)
+    cmm.main()
+    again = vis.end()
+    if not again: break
+    if not vis.restart_lshift:
+      cmm = ChainedMatrixMult()
