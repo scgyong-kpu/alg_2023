@@ -1,0 +1,22 @@
+[
+  {
+    "name":"Gold",
+    "weight":30,
+    "price":80
+  },
+  {
+    "name":"Bronze",
+    "weight":50,
+    "price":30
+  },
+  {
+    "name":"Platinum",
+    "weight":20,
+    "price":130
+  },
+  {
+    "name":"Silver",
+    "weight":50,
+    "price":100
+  }
+]
