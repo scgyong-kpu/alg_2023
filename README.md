@@ -20,10 +20,10 @@ Algorithm Lecture 2023
 16. **[10/24] Ch 4 Greedy #1 : Coin, MST**
 17. **[10/30] Ch 4 Greedy #2 : Kruskal, Prim** - ch42pr-13 까지 진행. heapq 할차례
 18. **[10/31] Ch 4 Greedy #3 : Prim, Dijkstra, Knapsack, ...**
-19. [11/6] Ch 4 Greedy #4 : Set-Cover, Floyd-Warshall (Online)
-20. [11/7] Ch 4 Greedy #5 : 실습
-21. [11/13] Ch 5 DyPrg #1 : Matrix, 0-1 Knapsack, Coin Change
-22. [11/14] Ch 5 DyPrg #2 : 실습
+19. **[11/6] Ch 4 Greedy #4 : Set-Cover, Floyd-Warshall (Online)**
+20. **[11/7] Ch 4 Greedy #5 : 실습**
+21. **[11/13] Ch 5 DyPrg #1 : Matrix, 0-1 Knapsack, Coin Change**
+22. **[11/14] Ch 5 DyPrg #2 : 실습**
 23. [11/20] Ch 7 NP-Complete
 24. [11/21] Ch 8 Approx. Algo. #1 : PPT
 25. [11/27] Ch 8 Approx. Algo. #2 : 실습: MST-TSP
