@@ -18,11 +18,11 @@ Algorithm Lecture 2023
 14. **[10/19] 중간고사 대비 정리**
 15. **[10/24] 중간고사**
 16. **[10/26] Ch 4 Greedy #1 : Coin, MST, Graph Data**
-17. [10/31] Ch 4 Greedy #2 : Kruskal, Prim
-18. [11/2] Ch 4 Greedy #3 : Prim, Dijkstra, Knapsack, ... 
-19. [11/7] Ch 4 Greedy #4 : Set-Cover, Floyd-Warshall (Online)
-20. [11/9] Ch 4 Greedy #5 : 실습
-21. [11/14] Ch 5 DyPrg #1 : Matrix, 0-1 Knapsack, Coin Change
+17. **[10/31] Ch 4 Greedy #2 : Kruskal, Prim**
+18. **[11/2] Ch 4 Greedy #3 : Prim, Dijkstra, Knapsack, ...**
+19. **[11/7] Ch 4 Greedy #4 : Set-Cover, Floyd-Warshall (Online)**
+20. **[11/9] Ch 4 Greedy #5 : 실습**
+21. **[11/14] Ch 5 DyPrg #1 : Matrix, 0-1 Knapsack, Coin Change**
 22. [11/16] Ch 5 DyPrg #2 : 실습
 23. [11/21] Ch 7 NP-Complete
 24. [11/23] Ch 8 Approx. Algo. #1 : PPT
