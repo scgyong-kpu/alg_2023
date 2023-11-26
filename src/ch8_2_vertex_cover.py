@@ -9,6 +9,14 @@ class VertexCover:
     self.edges = edges
     self.usingSetCover = usingSetCover
     self.main = self.setCoverMain if usingSetCover else self.maxMatchMain
+    self.build_graph() # for visualizer
+
+  def build_graph(self):
+    n_cities = len(self.cities)
+    self.graph = {u: dict() for u in range(n_cities)}
+    for u,v,w in self.edges:
+      self.graph[u][v] = w
+      self.graph[v][u] = w
 
   def setCoverMain(self):
     print('Using Set Cover')
@@ -23,6 +31,18 @@ class VertexCover:
     print(self.u, self.f)
     self.U = deepcopy(self.u)                   # U, F 는 원소를 없애가면서 작업할 것이므로
     self.F = deepcopy(self.f)                   # u, f 로부터 deepcopy 하여 준비한다
+
+    self.C = []
+    while self.U:
+      max_i = self.F.index(max(self.F, key=lambda s: len(s & self.U))) # ch46sc commit 들을 참고한다
+      vis.fix(max_i)                 # max_i 번째에 가장 원소가 많이 겹친다
+      print(f'fixing {max_i}')
+      S = self.F[max_i]              # F 에서 U 와의 교집합이 가장 큰 부분집합
+      self.U -= S                    # U 에서 해당 부분집합의 원소를 제거한다
+      print(S, self.U, self.F)
+      self.F[max_i] = set()
+      self.C.append(S)
+
     vis.draw()
 
   def maxMatchMain(self):
