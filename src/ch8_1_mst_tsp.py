@@ -23,7 +23,7 @@ class TspMst:
     self.mst()
     vis.finish_mst()
     self.mg = self.build_graph(self.mst_edges) # MST 결과물로 다시 adj-matrix 를 만든다
-    # self.tsp()
+    self.tsp()
     vis.finish()
 
   def mst(self):
@@ -54,9 +54,27 @@ class TspMst:
     vis.finish()
 
   def tsp(self):
-    pass
-    # self.make_sequence()
+    self.make_sequence()
     # self.find_shortcut()     # 이제 중복된 점만 삭제하면 된다
+
+  def make_sequence(self):
+    self.seq = [ self.start_index ] # 방문할 정점들을 기록
+    current = self.start_index
+    while True:
+      if current == self.start_index and not self.mg[self.start_index]:
+        break # 시작위치에 돌아왔을 때 더이상 갈 곳이 없으면 그만한다
+      adjs = self.mg[current].keys() # 현재 점의 주변 점들이 남아있는지 확인한다
+      visit = None
+      for k in adjs:
+        if visit == None: visit = k  # 첫번째 점을 우선 선택해 둔다
+        if k not in self.seq:        # 아직 방문하지 않은 점이면 선택한다
+          visit = k
+          break
+      self.mg[current].pop(visit)    # 선택한 점은 재방문을 막기 위해 삭제한다
+      self.seq.append(visit)         # 방문할 정점들에 추가한다
+      vis.add_seq(current, visit)
+      current = visit                # 선택한 점으로 진행한다
+
 
 vis = Visualizer('TSP using MST')
 while True:
