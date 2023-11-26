@@ -24,6 +24,12 @@ class BinPacking:                              # Bin Packing 알고리즘을 구
     self.objs = objs[:]   # 입력된 물건들을 복사해서 저장해 둔다. 하나씩 뽑아 쓸 예정이므로 대입하지 않고 복사한다.
 
   def main(self):
+    vis.add(None)
+    bin = Bin()              # 새로운 Bin 을 만들고
+    obj = self.objs.pop(0)   # 하나를 뽑아서
+    bin.add(obj)             # bin 에 넣은뒤
+    self.bins.append(bin)    # bins 에 추가한다
+    vis.add(bin)
     vis.draw()
 
 vis = Visualizer('Bin Packing')
