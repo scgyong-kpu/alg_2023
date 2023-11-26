@@ -16,7 +16,8 @@ class Cluster:
       # 이번에 추가되는 센터가 최초의 센터이면
       this_center = randint(0, n_cities - 1)
     else:
-      return
+      # 가장 먼 점을 꺼내어 센터로 삼는다
+      this_center, _ = self.dists.popitem()
 
     # 이번에 추가된 센터를 기록한다
     self.dists[this_center] = (0, this_center)
