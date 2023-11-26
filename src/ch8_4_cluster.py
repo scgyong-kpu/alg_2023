@@ -70,7 +70,7 @@ class Cluster:
     self.dists = heapdict()
     self.centers = []
 
-def makePattern(cities):
+def makePattern_diagonal(cities):
   x1 = x2 = cities[0].x
   y1 = y2 = cities[0].y
   for c in cities:
@@ -88,6 +88,20 @@ def makePattern(cities):
     y = dx * slope
     cp.y = round(y + (cp.y - y) % SCATTER - SCATTER // 2)
     copy.append(cp)
+
+  return copy
+
+def makePattern(cities):
+  centers = [ (randint(50,1550),randint(50,850)) for _ in range(6) ]
+  ic = 0
+  copy = []
+  for c in cities:
+    cp = c.clone()
+    cx,cy = centers[ic]
+    cp.x = cx + randint(0, 100) - 50
+    cp.y = cy + randint(0, 100) - 50
+    copy.append(cp)
+    ic = (ic + 1) % len(centers)
 
   return copy
 
