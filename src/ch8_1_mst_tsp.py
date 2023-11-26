@@ -47,7 +47,7 @@ class TspMst:
         self.weights[adj] = weight           # adj 까지 가는 가까운 거리는 weight 이며
         self.origins[adj] = v                # adj 까지 가려면 v 를 통해서 가야 한다
 
-      if len(self.completed) == 1: break
+      if len(self.completed) == 2: break
 
     vis.finish()
 
