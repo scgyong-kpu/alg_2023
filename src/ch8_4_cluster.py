@@ -29,6 +29,7 @@ class Cluster:
       # dists 딕셔너리에 갱신해준다
       if not i in self.dists or d < -self.dists[i][0]:
         self.dists[i] = (-d, this_center)
+        # Min-Heap 이므로 음수로 기록해야 최대값을 얻을 수 있으며, 가까운 센터가 어디인지도 함께 저장한다
 
       # 각 점들에 대해 갱신하는 과정을 보여주자
       vis.compare(i, this_center,
