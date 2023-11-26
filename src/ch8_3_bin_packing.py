@@ -21,6 +21,23 @@ def first_fit(size, bins):
     if b.hasSize(size): return b
   return None
 
+last_bin = None
+def next_fit(size, bins):
+  global last_bin
+  if last_bin == None: return None
+  if last_bin.hasSize(size): return last_bin
+  return None
+
+def best_fit(size, bins):
+  fits = list(filter(lambda b: b.hasSize(size), bins))
+  if len(fits) == 0: return None
+  return min(fits, key=lambda b: b.free)
+
+def wost_fit(size, bins):
+  fits = list(filter(lambda b: b.hasSize(size), bins))
+  if len(fits) == 0: return None
+  return max(fits, key=lambda b: b.free)
+
 class BinPacking:                              # Bin Packing 알고리즘을 구현하는 클래스
   FIRST_FIT, NEXT_FIT, BEST_FIT, WORST_FIT, FIT_COUNT = range(5)
   def __init__(self, strategy, objs):
@@ -30,6 +47,8 @@ class BinPacking:                              # Bin Packing 알고리즘을 구
 
   def main(self):
     vis.add(None)
+    global last_bin
+    last_bin = None
     while self.objs:
       obj = self.objs.pop(0)          # 하나를 뽑아서
       bin = first_fit(obj, self.bins) # 알맞은 Bin 을 찾은다음
