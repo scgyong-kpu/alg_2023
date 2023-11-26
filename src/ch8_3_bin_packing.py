@@ -16,6 +16,11 @@ class Bin:                                     # Bin 자료구조를 정의하�
   def __repr__(self):                          # 문자열로 변환될 필요가 있을 때에는
     return f'{self.objs}({self.free})'         # 물건들의 내용과 빈 공간을 출력한다
 
+def first_fit(size, bins):
+  for b in bins:
+    if b.hasSize(size): return b
+  return None
+
 class BinPacking:                              # Bin Packing 알고리즘을 구현하는 클래스
   FIRST_FIT, NEXT_FIT, BEST_FIT, WORST_FIT, FIT_COUNT = range(5)
   def __init__(self, strategy, objs):
@@ -26,10 +31,12 @@ class BinPacking:                              # Bin Packing 알고리즘을 구
   def main(self):
     vis.add(None)
     while self.objs:
-      bin = Bin()              # 새로운 Bin 을 만들고
-      obj = self.objs.pop(0)   # 하나를 뽑아서
-      bin.add(obj)             # bin 에 넣은뒤
-      self.bins.append(bin)    # bins 에 추가한다
+      obj = self.objs.pop(0)          # 하나를 뽑아서
+      bin = first_fit(obj, self.bins) # 알맞은 Bin 을 찾은다음
+      if bin == None:                 # 못찾았으면
+        bin = Bin()                     # 새로 만들어서
+        self.bins.append(bin)           # 추가한다
+      bin.add(obj)                    # 찾은/만든 bin 에 넣는다
       vis.add(bin)
 
 
