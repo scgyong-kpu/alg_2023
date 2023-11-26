@@ -10,10 +10,23 @@ class Cluster:
     self.centers = []
 
   def addCenter(self):
-    pass
+    n_cities = len(self.cities)
+    if not self.centers:
+      # 이번에 추가되는 센터가 최초의 센터이면
+      this_center = randint(0, n_cities - 1)
+    else:
+      return
 
+    # 이번에 추가된 센터를 기록한다
+    self.dists[this_center] = (0, this_center)
+    self.centers.append(this_center)
+
+    vis.draw()
+
+  # cities 만 남겨두고 재시작한다. 시작 도시를 랜덤하게 선택하기 때문에 다른 답을 구해 본다
   def reset(self):
-    pass
+    self.dists = heapdict()
+    self.centers = []
 
 # Random Seed 를 정해 두어 랜덤이 정해진 순서대로 나오도록 한다
 seed('cluster')
@@ -29,7 +42,7 @@ while True:
     cities.sort(key=lambda c: c.x*10000+c.y)
     City.apply_index(cities)
     alg = Cluster(cities)
-    vis.setup(alg, True)
+    vis.setup(alg, False)
     gen = False
 
   vis.draw()
