@@ -38,10 +38,18 @@ def wost_fit(size, bins):
   if len(fits) == 0: return None
   return max(fits, key=lambda b: b.free)
 
+strategies = [
+  first_fit, 
+  next_fit, 
+  best_fit, 
+  wost_fit, 
+]
+
 class BinPacking:                              # Bin Packing 알고리즘을 구현하는 클래스
   FIRST_FIT, NEXT_FIT, BEST_FIT, WORST_FIT, FIT_COUNT = range(5)
   def __init__(self, strategy, objs):
     self.strategy = strategy                   # 어떤 핏인지 저장
+    self.sfunc = strategies[strategy]          # Strategy Function 선정
     self.bins = []                             # Bin 들의 배열
     self.objs = objs[:]   # 입력된 물건들을 복사해서 저장해 둔다. 하나씩 뽑아 쓸 예정이므로 대입하지 않고 복사한다.
 
@@ -51,11 +59,12 @@ class BinPacking:                              # Bin Packing 알고리즘을 구
     last_bin = None
     while self.objs:
       obj = self.objs.pop(0)          # 하나를 뽑아서
-      bin = first_fit(obj, self.bins) # 알맞은 Bin 을 찾은다음
+      bin = self.sfunc(obj, self.bins)# 알맞은 Bin 을 찾은다음
       if bin == None:                 # 못찾았으면
         bin = Bin()                     # 새로 만들어서
         self.bins.append(bin)           # 추가한다
       bin.add(obj)                    # 찾은/만든 bin 에 넣는다
+      last_bin = bin
       vis.add(bin)
 
 
@@ -67,7 +76,7 @@ while True:
     objs = [ randint(1, 75) for _ in range(100) ] # 1~75 까지의 랜덤한 숫자 100 개를 만들어둔다
     print(objs)
     gen = False
-  print(f'Fit = {fit}')
+  print(f'Fit = {fit}, {strategies[fit]}')
   bp = BinPacking(fit, objs)                      # 선택된 fit 과 숫자들을 가지고 알고리즘 객체 생성한다
   vis.setup(bp)
   bp.main()                                       # 알고리즘을 진행한다
