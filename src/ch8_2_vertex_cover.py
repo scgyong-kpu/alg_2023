@@ -47,10 +47,22 @@ class VertexCover:
 
   def maxMatchMain(self):
     print('Using Maximul Matching')
+    n_cities = len(self.cities)
+    n_edges = len(self.edges)
+    self.adjs = [ set() for _ in range(n_cities) ]
+    print(self.adjs)
+    for i in range(n_edges):
+      u,v,w = self.edges[i]
+      self.adjs[u].add(v)
+      self.adjs[v].add(u)
+    print(self.adjs)        # 각 점에서 연결되는 점들을 저장하는 Adj Set 을 만들어 둔다
+    self.vc = set()         # 결과가 저장될 Vertex Cover
+    edge_count = 0          # 지운 edge 수. n_edges 까지 지워지면 (cover 되면) 프로그램 종료
+
     vis.draw()
 
 vis = Visualizer('Vertex Cover')
-usingSetCover, gen = True, True
+usingSetCover = False
 while True:
   vc = VertexCover(dsc.cities, dsc.edges, usingSetCover)
   vis.setup(vc)
