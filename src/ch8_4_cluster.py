@@ -50,7 +50,7 @@ class Cluster:
     self.centers = []
 
 # Random Seed 를 정해 두어 랜덤이 정해진 순서대로 나오도록 한다
-seed('cluster')
+seed('K cluster')
 vis = Visualizer('Clustering')
 gen = True
 while True:
@@ -63,7 +63,7 @@ while True:
     cities.sort(key=lambda c: c.x*10000+c.y)
     City.apply_index(cities)
     alg = Cluster(cities)
-    vis.setup(alg, False)
+    vis.setup(alg, True)
     gen = False
 
   vis.draw()
