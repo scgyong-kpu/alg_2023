@@ -21,6 +21,10 @@ class TspMst:
     vis.set_start(self.start_index)
     self.g = self.build_graph(self.edges)
     self.mst()
+    vis.finish_mst()
+    self.mg = self.build_graph(self.mst_edges) # MST 결과물로 다시 adj-matrix 를 만든다
+    # self.tsp()
+    vis.finish()
 
   def mst(self):
     self.completed = set()
@@ -48,6 +52,11 @@ class TspMst:
         self.origins[adj] = v                # adj 까지 가려면 v 를 통해서 가야 한다
 
     vis.finish()
+
+  def tsp(self):
+    pass
+    # self.make_sequence()
+    # self.find_shortcut()     # 이제 중복된 점만 삭제하면 된다
 
 vis = Visualizer('TSP using MST')
 while True:
