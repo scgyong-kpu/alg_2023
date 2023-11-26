@@ -55,7 +55,7 @@ class TspMst:
 
   def tsp(self):
     self.make_sequence()
-    # self.find_shortcut()     # 이제 중복된 점만 삭제하면 된다
+    self.find_shortcut()     # 이제 중복된 점만 삭제하면 된다
 
   def make_sequence(self):
     self.seq = [ self.start_index ] # 방문할 정점들을 기록
@@ -75,6 +75,22 @@ class TspMst:
       vis.add_seq(current, visit)
       current = visit                # 선택한 점으로 진행한다
 
+  def find_shortcut(self):
+    vis.start_shortcut()
+    visited = set()                  # 이미 방문한 점들의 집합
+    index = 0
+    while index < len(self.seq):     # 중복된 점이 없을때까지 진행
+      current = self.seq[index]
+      if current in visited:         # 방문했던 점이라면
+        vis.update_shortcut(current)
+        self.seq.pop(index)          # 현재 점은 삭제한다
+      else:                          # 그렇지 않다면 (방문 안한 점이면)
+        vis.update_shortcut(current)
+        visited.add(current)         # 방문한 점으로 기록하고
+        index += 1                   # 다음 점으로 넘어간다
+
+    self.seq.append(self.start_index)
+    vis.update_shortcut(self.start_index)
 
 vis = Visualizer('TSP using MST')
 while True:
