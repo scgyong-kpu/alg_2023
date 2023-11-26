@@ -86,8 +86,6 @@ class VertexCover:
 
       print(f'vc={self.vc} {edge_count=} {n_edges=}')
 
-      break # 일단 한바퀴만
-
     vis.draw()
 
 vis = Visualizer('Vertex Cover')
