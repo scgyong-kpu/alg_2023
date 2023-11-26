@@ -25,18 +25,13 @@ class BinPacking:                              # Bin Packing 알고리즘을 구
 
   def main(self):
     vis.add(None)
-    bin = Bin()              # 새로운 Bin 을 만들고
-    obj = self.objs.pop(0)   # 하나를 뽑아서
-    bin.add(obj)             # bin 에 넣은뒤
-    self.bins.append(bin)    # bins 에 추가한다
-    vis.add(bin)
+    while self.objs:
+      bin = Bin()              # 새로운 Bin 을 만들고
+      obj = self.objs.pop(0)   # 하나를 뽑아서
+      bin.add(obj)             # bin 에 넣은뒤
+      self.bins.append(bin)    # bins 에 추가한다
+      vis.add(bin)
 
-    bin = Bin()              # 새로운 Bin 을 만들고
-    obj = self.objs.pop(0)   # 하나를 뽑아서
-    bin.add(obj)             # bin 에 넣은뒤
-    self.bins.append(bin)    # bins 에 추가한다
-
-    vis.add(bin)
 
 vis = Visualizer('Bin Packing')
 fit = BinPacking.FIRST_FIT
