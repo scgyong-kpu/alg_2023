@@ -31,7 +31,25 @@ class TspMst:
     self.origins[self.start_index] = self.start_index # 거쳐 가는 점 정보에 같은 수를 넣어서 출발지로 삼는다
     vis.append(0, self.start_index)
     self.mst_edges = []                  # 결과를 저장할 Edge List
-    vis.draw()
+
+    while self.weights:
+      v, w = self.weights.popitem()      # 알려진 거리가 가장 가까운 점(v)과 거리(w) 를 얻는다
+      u = self.origins[v]                # v 에 가려면 u 를 들러서 가야 한다는 것을 알아낸다
+      if u != v:                         # v 가 출발점이 아니라면
+        self.mst_edges.append((u, v, w))   # (u,v,w) 를 MST 에 추가한다
+        self.completed.add(v)
+      vis.fix(v, u)
+
+      for adj, weight in self.g[v].items():  # 지금 확정되는 점 v 주위의 점들 adj 들에 대하여
+        if adj in self.completed: continue   # 이미 완성집합에 들어있으면 무시한다
+        vis.compare(adj, v, weight, True)
+        if adj in self.weights and self.weights[adj] < weight: continue # 거리정보가 있는데 이미 가까우면 무시한다
+        self.weights[adj] = weight           # adj 까지 가는 가까운 거리는 weight 이며
+        self.origins[adj] = v                # adj 까지 가려면 v 를 통해서 가야 한다
+
+      if len(self.completed) == 1: break
+
+    vis.finish()
 
 vis = Visualizer('TSP using MST')
 while True:
