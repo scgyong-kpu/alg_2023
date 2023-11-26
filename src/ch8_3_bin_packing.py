@@ -66,6 +66,7 @@ class BinPacking:                              # Bin Packing 알고리즘을 구
       bin.add(obj)                    # 찾은/만든 bin 에 넣는다
       last_bin = bin
       vis.add(bin)
+    print(f'Bin count={len(self.bins)}')
 
 
 vis = Visualizer('Bin Packing')
