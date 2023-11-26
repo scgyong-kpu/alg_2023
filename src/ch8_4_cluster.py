@@ -70,6 +70,27 @@ class Cluster:
     self.dists = heapdict()
     self.centers = []
 
+def makePattern(cities):
+  x1 = x2 = cities[0].x
+  y1 = y2 = cities[0].y
+  for c in cities:
+    x1, x2 = min(x1, c.x), max(c.x, x2)
+    y1, y2 = min(y1, c.y), max(c.y, y2)
+  # print(f'{x1},{y1} - {x2},{y2}')
+  slope = (y2-y1)/(x2-x1)
+  copy = []
+  for c in cities:
+    cp = c.clone()
+    dx = cp.x - x1
+    factor = min(10, max(1, abs(dx / (x2-x1) - 0.5) * 20))
+    SCATTER = round((y2-y1) / factor)
+    print(f'{cp.x},{dx / (x2-x1):.3f} - {SCATTER}')
+    y = dx * slope
+    cp.y = round(y + (cp.y - y) % SCATTER - SCATTER // 2)
+    copy.append(cp)
+
+  return copy
+
 # Random Seed 를 정해 두어 랜덤이 정해진 순서대로 나오도록 한다
 seed('K cluster')
 vis = Visualizer('Clustering')
@@ -80,6 +101,7 @@ while True:
     beg = randint(0, 700)
     end = randint(beg+15, beg+200)
     cities = five_letter_cities[beg:end]
+    cities = makePattern(cities)
     # x좌표, y좌표 별로 정렬한다
     cities.sort(key=lambda c: c.x*10000+c.y)
     City.apply_index(cities)
