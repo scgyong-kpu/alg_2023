@@ -3,6 +3,7 @@ from heapdict import heapdict
 from math import sqrt
 from data_city import five_letter_cities, City
 from vis import ClusterVisualizer as Visualizer
+from welzl import welzl
 
 class Cluster:
   def __init__(self, cities):
@@ -35,6 +36,25 @@ class Cluster:
       # 각 점들에 대해 갱신하는 과정을 보여주자
       vis.compare(i, this_center,
         d if this_center != self.dists[i][1] else 0)
+
+    clusters = [ [] for _ in self.centers ] # centers 개수만큼 빈 배열을 준비한다
+    for i in range(n_cities): # 모든 점들에 대하여
+      # 정점 i 가 어느 center 와 가까운지 알아내자
+      _, center = self.dists[i]
+      # center 가 몇번째 센터인지 알아내자 (ci = center index)
+      ci = self.centers.index(center)
+      # ci 번째 클러스터에 i 번째 도시를 넣어주자
+      clusters[ci].append(self.cities[i])
+
+    # 제일 큰 원의 반지름을 max_r 에 저장한다
+    max_r = 0
+    for ci in range(len(self.centers)):
+      cities = clusters[ci]
+      x, y, r = welzl(cities)
+      if max_r < r: max_r = r
+      center_city = self.cities[self.centers[ci]]
+      print(f'{center_city} - {len(cities)} cities: ({round(x)},{round(y)}) r: {round(r)}')
+    print(f'----- [{len(clusters)} clusters] max R = {round(max_r)} -----')
 
     vis.draw()
 
