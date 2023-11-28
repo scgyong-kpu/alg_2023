@@ -18,6 +18,8 @@ class City:
     if hasattr(self, 'weight'):
       name = f'{name} {self.weight})'
     return name
+  def clone(self):
+    return City(self.name, self.x, self.y)
   @staticmethod
   def apply_index(cities):
     for i in range(len(cities)): 
