@@ -29,5 +29,5 @@ Algorithm Lecture 2023
 25. **[11/28] Ch 8 Approx. Algo. #2 : 실습: MST-TSP**
 26. **[11/30] Ch 8 Approx. Algo. #3 : 실습: VertexCover, BinPacking**
 27. **[12/5] Ch 8 Approx. Algo. #4 : 실습: Clustering**
-28. [12/7] 기말고사 대비 정리
+28. **[12/7] 기말고사 대비 정리**
 29. [12/12] 기말고사
