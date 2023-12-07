@@ -25,10 +25,10 @@ Algorithm Lecture 2023
 21. **[11/13] Ch 5 DyPrg #1 : Matrix, 0-1 Knapsack, Coin Change**
 22. **[11/16] Ch 5 DyPrg #2 : 실습**
 23. **[11/20] Ch 7 NP-Complete**
-24. [11/23] Ch 8 Approx. Algo. #1 : PPT
-25. [11/27] Ch 8 Approx. Algo. #2 : 실습: MST-TSP
-26. [11/30] Ch 8 Approx. Algo. #3 : 실습: VertexCover, BinPacking
-27. [12/4] Ch 8 Approx. Algo. #4 : 실습: Clustering
-28. [12/7] 기말고사 대비 정리
+24. **[11/23] Ch 8 Approx. Algo. #1 : PPT**
+25. **[11/27] Ch 8 Approx. Algo. #2 : 실습: MST-TSP**
+26. **[11/30] Ch 8 Approx. Algo. #3 : 실습: VertexCover, BinPacking**
+27. **[12/4] Ch 8 Approx. Algo. #4 : 실습: Clustering**
+28. **[12/7] 기말고사 대비 정리**
 29. [12/11] 기말고사
 
